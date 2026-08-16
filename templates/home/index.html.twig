@@ -1,0 +1,903 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Airways Orthodontics | Luchtweg, ademhaling en slaap
+{% endblock %}
+
+{% block meta_description %}
+    Airways Orthodontics ondersteunt verwijzers bij het herkennen, screenen en begeleiden van patiënten met luchtweg-, ademhalings- en slaapgerelateerde klachten.
+{% endblock %}
+
+{% block body %}
+
+    {# Hero #}
+    <section class="relative overflow-hidden bg-[#f4f5f1]">
+
+        <div class="mx-auto grid max-w-7xl items-center gap-14 px-6 py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
+
+            {# Linkerkolom #}
+            <div class="max-w-2xl">
+
+                <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-teal-950/10 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-teal-950">
+                    Multidisciplinaire airway-zorg
+                </div>
+
+                <h1 class="text-4xl font-semibold tracking-[-0.035em] text-slate-950 sm:text-5xl lg:text-6xl lg:leading-[1.05]">
+                    Herkent u deze
+                    <span class="text-teal-900">
+                        patiënten?
+                    </span>
+                </h1>
+
+                <p class="mt-7 max-w-xl text-lg leading-8 text-slate-600">
+                    Snurken, mondademhaling, slecht slapen, slaapapneu of
+                    onverklaarde vermoeidheid kunnen wijzen op onderliggende
+                    luchtweg-, ademhalings- en groeiproblemen.
+                </p>
+
+                <p class="mt-4 max-w-xl text-base leading-7 text-slate-600">
+                    Airways Orthodontics helpt verwijzers bij het herkennen,
+                    screenen en begeleiden van patiënten binnen een
+                    multidisciplinaire aanpak.
+                </p>
+
+                <div class="mt-9 flex flex-wrap items-center gap-4">
+
+                    <a
+                        href="#klachten"
+                        class="inline-flex items-center justify-center rounded-full bg-teal-950 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-teal-900"
+                    >
+                        Klachten herkennen
+
+                        <svg
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            class="ml-2 h-4 w-4"
+                            aria-hidden="true"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M4 10h12m-5-5 5 5-5 5"
+                            />
+                        </svg>
+                    </a>
+
+                    <a
+                        href="#verwijzers"
+                        class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-900 transition hover:border-slate-400 hover:bg-slate-50"
+                    >
+                        Verwijs een patiënt
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            {# Rechterkolom #}
+            <div class="relative pb-14 lg:pb-16">
+
+                {# Hoofdkaart #}
+                <div class="overflow-hidden rounded-[2.5rem] bg-teal-950">
+
+                    {# Fotozone #}
+                    <div class="relative h-[360px] sm:h-[400px] lg:h-[420px]">
+
+                        <img
+                            src="{{ asset('images/home/doctor.png') }}"
+                            alt="Zorgverlener van Airways Orthodontics in gesprek met een patiënt"
+                            class="h-full w-full object-cover"
+                        >
+
+                        {# SVG overlay #}
+                        <div class="absolute right-7 top-8 z-20 sm:right-8 sm:top-9 lg:right-10 lg:top-10">
+
+                            <div class="flex h-14 w-14 items-center justify-center rounded-full border border-white/40 bg-teal-950/15 text-white backdrop-blur-sm sm:h-16 sm:w-16">
+
+                                <svg
+                                    viewBox="0 0 40 40"
+                                    fill="none"
+                                    class="h-8 w-8 sm:h-9 sm:w-9"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M20 5C15.5 11 13 15.5 13 21C13 27 16.5 32 20 35"
+                                        stroke="currentColor"
+                                        stroke-width="1.7"
+                                        stroke-linecap="round"
+                                    />
+
+                                    <path
+                                        d="M20 5C24.5 11 27 15.5 27 21C27 27 23.5 32 20 35"
+                                        stroke="currentColor"
+                                        stroke-width="1.7"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    {# Groene tekstzone #}
+                    <div class="flex min-h-[300px] items-center bg-teal-950 px-8 py-12 text-white sm:min-h-[320px] sm:px-10 lg:min-h-[340px] lg:px-12 lg:py-14">
+
+                        <div class="max-w-lg">
+
+                            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+                                Kijk verder dan de klacht
+                            </p>
+
+                            <p class="mt-5 text-2xl font-medium leading-9 sm:text-[1.65rem] lg:text-[1.75rem] lg:leading-10">
+                                Ademhaling, slaap, kaakontwikkeling en
+                                algemene gezondheid zijn nauw met elkaar
+                                verbonden.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                {# Witte overlaykaart #}
+                <div class="absolute -bottom-1 -left-4 z-30 hidden w-[320px] rounded-2xl bg-white p-5 shadow-xl shadow-slate-950/10 sm:block lg:-left-8 lg:w-[340px] lg:p-6">
+
+                    <div class="flex items-start gap-4">
+
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#e8efeb] text-teal-950">
+
+                            <svg
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                class="h-5 w-5"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="m5 10 3 3 7-7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+
+                        </div>
+
+                        <div class="min-w-0">
+
+                            <p class="text-sm font-semibold text-slate-950">
+                                Vroegtijdig herkennen
+                            </p>
+
+                            <p class="mt-1.5 text-xs leading-5 text-slate-500">
+                                Kan bijdragen aan gerichtere diagnostiek
+                                en een passend vervolgtraject.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {# Intro klachten #}
+    <section
+        id="klachten"
+        class="bg-white py-20 lg:py-28"
+    >
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div class="max-w-2xl">
+
+                <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-800">
+                    Herken de signalen
+                </p>
+
+                <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                    Veelvoorkomende klachten
+                </h2>
+
+                <p class="mt-5 text-lg leading-8 text-slate-600">
+                    Patiënten presenteren zich vaak met klachten, niet met
+                    een behandelvraag. Daarom begint onze aanpak bij
+                    herkenning.
+                </p>
+
+            </div>
+
+            <div class="mt-12 grid gap-px overflow-hidden rounded-3xl border border-slate-200 bg-slate-200 md:grid-cols-2 lg:grid-cols-3">
+
+            {% set complaints = [
+                {
+                    icon: 'snoring',
+                    title: 'Snurken',
+                    text: 'Snurken kan wijzen op een onderliggend luchtwegprobleem en verdient verdere beoordeling.'
+                },
+                {
+                    icon: 'breathing',
+                    title: 'Mondademhaling',
+                    text: 'Chronische mondademhaling kan invloed hebben op groei, slaap en algemene gezondheid.'
+                },
+                {
+                    icon: 'fatigue',
+                    title: 'Vermoeidheid',
+                    text: 'Onverklaarde vermoeidheid kan samenhangen met verstoorde ademhaling tijdens de slaap.'
+                },
+                {
+                    icon: 'sleep-apnea',
+                    title: 'Slaapapneu',
+                    text: 'Ademstops tijdens de slaap kunnen leiden tot vermoeidheid en andere gezondheidsklachten.'
+                },
+                {
+                    icon: 'sleep',
+                    title: 'Slecht slapen',
+                    text: 'Moeite met slapen of niet uitgerust wakker worden kan samenhangen met ademhalingsproblemen.'
+                },
+                {
+                    icon: 'jaw',
+                    title: 'Kaakontwikkeling',
+                    text: 'Een afwijkende groei van kaak en gezicht kan invloed hebben op ademhaling en slaap.'
+                }
+            ] %}
+
+            {% for complaint in complaints %}
+                <article class="group bg-white p-8 transition hover:bg-[#f7f8f5] lg:p-9">
+
+                    <div class="flex h-14 w-14 items-center justify-center rounded-full bg-teal-50 text-teal-700">
+                        <span class="block h-10 w-10 [&_svg]:h-full [&_svg]:w-full [&_svg]:fill-current">
+                            {% include 'partials/icons/' ~ complaint.icon ~ '.svg.twig' ignore missing %}
+                        </span>
+                    </div>
+
+                    <h3 class="mt-7 text-xl font-semibold text-slate-950">
+                        {{ complaint.title }}
+                    </h3>
+
+                    <p class="mt-3 text-sm leading-6 text-slate-600">
+                        {{ complaint.text }}
+                    </p>
+
+                    <a
+                        href="#"
+                        class="mt-6 inline-flex items-center text-sm font-semibold text-teal-900 transition-colors group-hover:text-teal-700"
+                    >
+                        Meer informatie
+
+                        <svg
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M4 10h12m-5-5 5 5-5 5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+
+                    </a>
+
+                </article>
+            {% endfor %}
+
+        </div>
+
+        </div>
+    </section>
+
+
+    {# Patientgroepen #}
+    <section
+        id="patienten"
+        class="bg-[#f4f5f1] py-20 lg:py-28"
+    >
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div class="max-w-2xl">
+                <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-800">
+                    Kinderen en volwassenen
+                </p>
+
+                <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                    Voor welke patiënten?
+                </h2>
+
+                <p class="mt-5 text-lg leading-8 text-slate-600">
+                    Klachten rond ademhaling, slaap en luchtwegontwikkeling
+                    kunnen zich op verschillende leeftijden anders uiten.
+                </p>
+            </div>
+
+            <div class="mt-12 grid gap-6 lg:grid-cols-2">
+
+                <article class="rounded-3xl bg-white p-8 lg:p-10">
+                    <p class="text-sm font-semibold text-teal-800">
+                        01
+                    </p>
+
+                    <h3 class="mt-4 text-2xl font-semibold text-slate-950">
+                        Kinderen
+                    </h3>
+
+                    <p class="mt-5 leading-7 text-slate-600">
+                        Vroege herkenning biedt kansen om de ontwikkeling
+                        van kaak, gezicht en luchtweg positief te beïnvloeden.
+                    </p>
+
+                    <ul class="mt-7 grid gap-3 text-sm text-slate-700 sm:grid-cols-2">
+                        <li>✓ Mondademhaling</li>
+                        <li>✓ Chronische verkoudheid</li>
+                        <li>✓ Vermoeidheid</li>
+                        <li>✓ Slecht slapen</li>
+                        <li>✓ Bedplassen</li>
+                        <li>✓ Concentratieproblemen</li>
+                    </ul>
+
+                    <a
+                        href="#"
+                        class="mt-8 inline-flex text-sm font-semibold text-teal-900"
+                    >
+                        Meer over kinderen →
+                    </a>
+                </article>
+
+                <article class="rounded-3xl bg-teal-950 p-8 text-white lg:p-10">
+                    <p class="text-sm font-semibold text-white/60">
+                        02
+                    </p>
+
+                    <h3 class="mt-4 text-2xl font-semibold">
+                        Volwassenen
+                    </h3>
+
+                    <p class="mt-5 leading-7 text-white/70">
+                        Luchtweg- en ademhalingsproblemen kunnen grote
+                        invloed hebben op gezondheid, functioneren en
+                        kwaliteit van leven.
+                    </p>
+
+                    <ul class="mt-7 grid gap-3 text-sm text-white/85 sm:grid-cols-2">
+                        <li>✓ Snurken</li>
+                        <li>✓ Slaapapneu</li>
+                        <li>✓ Vermoeidheid</li>
+                        <li>✓ Hoofdpijn</li>
+                        <li>✓ Slecht slapen</li>
+                        <li>✓ Concentratieverlies</li>
+                        <li>✓ Terugkerende Sinusitis</li>
+                    </ul>
+
+                    <a
+                        href="#"
+                        class="mt-8 inline-flex text-sm font-semibold text-white"
+                    >
+                        Meer over volwassenen →
+                    </a>
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    {# Placeholder volgende onderdelen #}
+    <section
+        id="aanpak"
+        class="bg-[#eaf7f6] py-20 lg:py-28"
+    >
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div class="max-w-4xl">
+
+                <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+                    Onze aanpak
+                </p>
+
+                <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                    Van klacht naar passende aanpak
+                </h2>
+
+                <p class="mt-5 text-lg leading-8 text-slate-600">
+                    Patiënten melden zich vaak met klachten zoals snurken,
+                    mondademhaling, vermoeidheid of slaapproblemen. Onze
+                    multidisciplinaire aanpak helpt om de onderliggende oorzaken
+                    in kaart te brengen en een passend behandeltraject op te stellen.
+                </p>
+
+            </div>
+
+            {% set steps = [
+                {
+                    number: '01',
+                    title: 'Herkennen',
+                    text: 'De verwijzer herkent klachten die mogelijk samenhangen met luchtweg-, ademhalings- of groeiproblemen.'
+                },
+                {
+                    number: '02',
+                    title: 'Screening',
+                    text: 'Wij brengen de luchtweg, ademhaling, kaakontwikkeling en slaapgerelateerde factoren in kaart.'
+                },
+                {
+                    number: '03',
+                    title: 'Multidisciplinair',
+                    text: 'Orthodontie, airway dentistry, kaakchirurgie, ademtherapie en andere disciplines beoordelen samen de situatie.'
+                },
+                {
+                    number: '04',
+                    title: 'Persoonlijk plan',
+                    text: 'Op basis van de bevindingen wordt een passend behandel- en begeleidingsplan opgesteld.'
+                }
+            ] %}
+
+            <div class="relative mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+
+                {% for step in steps %}
+                    <article class="relative flex h-full flex-col rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200/70 lg:p-8">
+
+                        <div class="flex items-center justify-between">
+
+                            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-teal-50 text-sm font-semibold text-teal-800">
+                                {{ step.number }}
+                            </div>
+
+                            {% if not loop.last %}
+                                <div class="hidden text-teal-300 lg:block">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.7"
+                                        class="h-5 w-5"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            d="M5 12h14m-5-5 5 5-5 5"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </svg>
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <h3 class="mt-7 text-xl font-semibold text-slate-950">
+                            {{ step.title }}
+                        </h3>
+
+                        <p class="mt-4 text-sm leading-6 text-slate-600">
+                            {{ step.text }}
+                        </p>
+
+                    </article>
+                {% endfor %}
+
+            </div>
+
+            <div class="mt-12 flex flex-col gap-6 border-t border-teal-900/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
+
+                <p class="max-w-3xl text-base leading-7 text-slate-700">
+                    Verwijzers ontvangen duidelijke terugkoppeling over bevindingen,
+                    behandelvoorstel en vervolgtraject.
+                </p>
+
+                <a
+                    href="#"
+                    class="inline-flex shrink-0 items-center justify-center rounded-full bg-teal-950 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-teal-900"
+                >
+                    Meer over onze aanpak
+
+                    <svg
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        class="ml-2 h-4 w-4"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M4 10h12m-5-5 5 5-5 5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section
+        id="samenwerking"
+        class="bg-slate-50 py-20 lg:py-28"
+    >
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div class="max-w-4xl">
+
+                <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+                    Samenwerking
+                </p>
+
+                <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                    Samenwerkende disciplines
+                </h2>
+
+                <p class="mt-5 text-lg leading-8 text-slate-600">
+                    Airways Orthodontics werkt multidisciplinair. Afhankelijk van
+                    de klachten en bevindingen kunnen verschillende disciplines
+                    betrokken worden bij screening, beoordeling en begeleiding.
+                </p>
+
+            </div>
+
+            {% set disciplines = [
+                {
+                    icon: 'orthodontics',
+                    title: 'Airways Orthodontics',
+                    subtitle: 'Kaakverbreding',
+                    text: 'Bij kinderen kan gerichte begeleiding van de kaakgroei bijdragen aan een betere ontwikkeling van gebit, gezicht en luchtweg.'
+                },
+                {
+                    icon: 'dentistry',
+                    title: 'Airways Dentistry',
+                    subtitle: 'Kaakchirurgie',
+                    text: 'Specialistische beoordeling van luchtweg, kaakpositie en de relatie met slaap- en ademhalingsproblemen.'
+                },
+                {
+                    icon: 'nose-breathing',
+                    title: 'Ademtherapie',
+                    subtitle: null,
+                    text: 'Begeleiding bij ademhalingspatronen, neusademhaling en functioneel ademen.'
+                },
+                {
+                    icon: 'speech',
+                    title: 'Logopedie',
+                    subtitle: null,
+                    text: 'Begeleiding bij tongpositie, slikpatronen, mondmotoriek en myofunctionele functies.'
+                }
+            ] %}
+
+            <div class="mt-14 grid gap-6 md:grid-cols-2">
+
+                {% for discipline in disciplines %}
+                    <article class="group relative rounded-3xl bg-white px-8 pb-9 pt-12 shadow-sm ring-1 ring-slate-200/70 transition hover:-translate-y-0.5 hover:shadow-md lg:px-10">
+
+                        <div class="absolute left-8 top-0 -translate-y-1/2 lg:left-10">
+                            <div class="flex h-16 w-16 items-center justify-center rounded-full bg-white text-teal-600 shadow-sm ring-1 ring-slate-200">
+
+                                <span class="block h-8 w-8 [&_svg]:h-full [&_svg]:w-full [&_svg]:fill-current">
+                                    {% include 'partials/icons/' ~ discipline.icon ~ '.svg.twig' ignore missing %}
+                                </span>
+
+                            </div>
+                        </div>
+
+                        <div class="pt-4">
+
+                            <h3 class="text-xl font-semibold text-slate-950">
+                                {{ discipline.title }}
+                            </h3>
+
+                            {% if discipline.subtitle %}
+                                <p class="mt-1 text-sm font-medium text-teal-700">
+                                    {{ discipline.subtitle }}
+                                </p>
+                            {% endif %}
+
+                            <p class="mt-4 max-w-xl text-sm leading-6 text-slate-600">
+                                {{ discipline.text }}
+                            </p>
+
+                        </div>
+
+                    </article>
+                {% endfor %}
+
+            </div>
+
+            <div class="mt-12 flex flex-col gap-6 border-t border-slate-200 pt-8 sm:flex-row sm:items-center sm:justify-between">
+
+                <p class="max-w-3xl text-base leading-7 text-slate-700">
+                    Samen zorgen we voor een gerichte beoordeling en duidelijke
+                    terugkoppeling aan de verwijzer.
+                </p>
+
+                <a
+                    href="{{ path('collaboration_index') }}"
+                    class="inline-flex shrink-0 items-center justify-center rounded-full bg-teal-950 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-teal-900"
+                >
+                    Meer over onze samenwerking
+
+                    <svg
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        class="ml-2 h-4 w-4"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M4 10h12m-5-5 5 5-5 5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+    
+    <section
+        id="verwijzers"
+        class="bg-[#eaf7f6] py-20 lg:py-28"
+    >
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+            {# Intro #}
+            <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+
+                <div class="max-w-2xl">
+
+                    <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+                        Voor verwijzers
+                    </p>
+
+                    <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                        Samen sneller tot de juiste beoordeling
+                    </h2>
+
+                    <p class="mt-5 text-lg leading-8 text-slate-600">
+                        Airways Orthodontics ondersteunt huisartsen, tandartsen,
+                        KNO-artsen, logopedisten, fysiotherapeuten en andere
+                        zorgprofessionals bij patiënten met luchtweg-,
+                        ademhalings- en slaapgerelateerde klachten.
+                    </p>
+
+                </div>
+
+                <div class="overflow-hidden rounded-3xl">
+
+                    <img
+                        src="{{ asset('images/home/dokter2.jpg') }}"
+                        alt="Zorgverlener onderzoekt een patiënt"
+                        class="h-[320px] w-full object-cover sm:h-[360px]"
+                        loading="lazy"
+                    >
+
+                </div>
+
+            </div>
+
+
+            {# Verwijzerskaarten #}
+            {% set referralSteps = [
+                {
+                    number: '01',
+                    title: 'Wanneer verwijzen?',
+                    text: 'Bij signalen zoals mondademhaling, snurken, slaapapneu, vermoeidheid of een afwijkende kaakontwikkeling.'
+                },
+                {
+                    number: '02',
+                    title: 'Hoe werkt het traject?',
+                    text: 'Van screening en analyse tot multidisciplinaire beoordeling en een persoonlijk behandel- en begeleidingsplan.'
+                },
+                {
+                    number: '03',
+                    title: 'Wat ontvangt u terug?',
+                    text: 'U ontvangt een duidelijke terugkoppeling met bevindingen, advies en het voorgestelde vervolgtraject.'
+                }
+            ] %}
+
+            <div class="mt-14 grid gap-6 lg:grid-cols-3">
+
+                {% for item in referralSteps %}
+                    <article class="relative rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200/70 lg:p-9">
+
+                        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-teal-50 text-sm font-semibold text-teal-800">
+                            {{ item.number }}
+                        </div>
+
+                        <h3 class="mt-7 text-xl font-semibold text-slate-950">
+                            {{ item.title }}
+                        </h3>
+
+                        <p class="mt-4 text-sm leading-6 text-slate-600">
+                            {{ item.text }}
+                        </p>
+
+                    </article>
+                {% endfor %}
+
+            </div>
+
+
+            {# CTA #}
+            <div class="mt-14 rounded-3xl bg-teal-950 px-8 py-10 text-white lg:flex lg:items-center lg:justify-between lg:px-10">
+
+                <div class="max-w-2xl">
+
+                    <p class="text-sm font-semibold uppercase tracking-[0.16em] text-white/60">
+                        Een patiënt bespreken?
+                    </p>
+
+                    <h3 class="mt-3 text-2xl font-semibold">
+                        Twijfelt u of een patiënt baat kan hebben bij een multidisciplinaire beoordeling?
+                    </h3>
+
+                    <p class="mt-4 text-sm leading-6 text-white/70">
+                        Neem gerust contact op met ons team. We denken graag mee
+                        over de meest passende vervolgstap.
+                    </p>
+
+                </div>
+
+                <div class="mt-7 flex flex-wrap gap-3 lg:mt-0 lg:ml-10">
+
+                    <a
+                        href="{{ path('referral_index') }}"
+                        class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-teal-950 transition hover:bg-teal-50"
+                    >
+                        Patiënt verwijzen
+                    </a>
+
+                    <a
+                        href="{{ path('contact_index') }}"
+                        class="inline-flex items-center justify-center rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10"
+                    >
+                        Contact opnemen
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="bg-teal-950 py-20 text-white lg:py-28">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div class="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+
+                <div class="max-w-xl">
+
+                    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-300">
+                        Waarom ademhaling ertoe doet
+                    </p>
+
+                    <h2 class="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+                        Ademhaling is geen detail.
+                        Het is een basisvoorwaarde.
+                    </h2>
+
+                    <p class="mt-6 text-lg leading-8 text-white/70">
+                        We kunnen langere tijd zonder voedsel en enkele dagen
+                        zonder vocht, maar onze hersenen zijn bijzonder gevoelig
+                        voor een tekort aan zuurstof.
+                    </p>
+
+                    <p class="mt-4 text-base leading-7 text-white/60">
+                        Juist daarom verdient de manier waarop iemand ademt —
+                        overdag én tijdens de slaap — aandacht wanneer klachten
+                        zoals snurken, mondademhaling, vermoeidheid of
+                        slaapstoornissen aanwezig zijn.
+                    </p>
+
+                </div>
+
+                <div class="grid gap-4 sm:grid-cols-3">
+
+                    <article class="rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-sm">
+                        <p class="text-4xl font-semibold tracking-tight text-teal-300">
+                            Minuten
+                        </p>
+
+                        <p class="mt-3 text-sm font-semibold text-white">
+                            Zonder adequate zuurstof
+                        </p>
+
+                        <p class="mt-3 text-sm leading-6 text-white/60">
+                            Hersencellen zijn bijzonder kwetsbaar wanneer de
+                            zuurstofvoorziening volledig wegvalt.
+                        </p>
+                    </article>
+
+                    <article class="rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-sm">
+                        <p class="text-4xl font-semibold tracking-tight text-teal-300">
+                            Dagen
+                        </p>
+
+                        <p class="mt-3 text-sm font-semibold text-white">
+                            Zonder voldoende vocht
+                        </p>
+
+                        <p class="mt-3 text-sm leading-6 text-white/60">
+                            Vocht is essentieel voor vrijwel alle lichamelijke
+                            functies.
+                        </p>
+                    </article>
+
+                    <article class="rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-sm">
+                        <p class="text-4xl font-semibold tracking-tight text-teal-300">
+                            Weken
+                        </p>
+
+                        <p class="mt-3 text-sm font-semibold text-white">
+                            Zonder voedsel
+                        </p>
+
+                        <p class="mt-3 text-sm leading-6 text-white/60">
+                            Het lichaam beschikt over energiereserves, maar niet
+                            over een vergelijkbare zuurstofreserve.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+            <div class="mt-14 border-t border-white/10 pt-10 lg:flex lg:items-center lg:justify-between">
+
+                <div class="max-w-3xl">
+                    <h3 class="text-xl font-semibold">
+                        De kwaliteit van ademhaling verdient daarom aandacht.
+                    </h3>
+
+                    <p class="mt-3 text-sm leading-6 text-white/60">
+                        Wetenschappelijk onderzoek laat zien dat verstoorde
+                        ademhaling en zuurstofvoorziening samen kunnen hangen met
+                        slaap, functioneren en gezondheid. Binnen Airways kijken
+                        we daarom verder dan alleen de afzonderlijke klacht.
+                    </p>
+                </div>
+
+                <a
+                    href="#kennisbank"
+                    class="mt-7 inline-flex shrink-0 items-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-teal-950 transition hover:bg-teal-50 lg:ml-10 lg:mt-0"
+                >
+                    Bekijk de kennisbank
+
+                    <svg
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        class="ml-2 h-4 w-4"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M4 10h12m-5-5 5 5-5 5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}

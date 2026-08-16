@@ -1,0 +1,134 @@
+<header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+
+        <a
+            href="{{ path('home') }}"
+            class="flex items-center gap-3"
+            aria-label="Airways Orthodontics home"
+        >
+            <div class="flex h-11 w-11 items-center justify-center rounded-full bg-teal-950 text-white">
+                <svg
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    class="h-7 w-7"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M20 6C16 11 14 15 14 20C14 26 16.8 30.3 20 34"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+
+                    <path
+                        d="M20 6C24 11 26 15 26 20C26 26 23.2 30.3 20 34"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+
+                    <path
+                        d="M14.5 18H25.5"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+                </svg>
+            </div>
+
+            <div class="leading-none">
+                <span class="block text-xl font-semibold tracking-tight text-slate-950">
+                    Airways
+                </span>
+
+                <span class="mt-1 block text-[10px] font-medium uppercase tracking-[0.2em] text-slate-500">
+                    Orthodontics
+                </span>
+            </div>
+        </a>
+
+        <nav
+            class="hidden items-center gap-8 lg:flex"
+            aria-label="Hoofdnavigatie"
+        >
+            <a
+                href="{{ path('home', {'_fragment': 'klachten'}) }}"
+                class="text-sm font-medium text-slate-600 transition hover:text-teal-950"
+            >
+                Klachten
+            </a>
+
+            <a
+                href="{{ path('home', {'_fragment': 'patienten'}) }}"
+                class="text-sm font-medium text-slate-600 transition hover:text-teal-950"
+            >
+                Voor wie?
+            </a>
+
+            <a
+                href="{{ path('home', {'_fragment': 'aanpak'}) }}"
+                class="text-sm font-medium text-slate-600 transition hover:text-teal-950"
+            >
+                Onze aanpak
+            </a>
+
+            <a
+                href="{{ path('collaboration_index') }}"
+                class="text-sm font-medium text-slate-600 transition hover:text-teal-950"
+            >
+                Samenwerking
+            </a>
+
+            <a
+                href="{{ path('home', {'_fragment': 'verwijzers'}) }}"
+                class="text-sm font-medium text-slate-600 transition hover:text-teal-950"
+            >
+                Voor verwijzers
+            </a>
+
+            <a
+                href="{{ path('home', {'_fragment': 'kennisbank'}) }}"
+                class="text-sm font-medium text-slate-600 transition hover:text-teal-950"
+            >
+                Kennisbank
+            </a>
+
+            <a
+                href="{{ path('contact_index') }}"
+                class="text-sm font-medium text-slate-600 transition hover:text-teal-950"
+            >
+                Contact
+            </a>
+        </nav>
+
+        <div class="hidden lg:flex lg:items-center">
+            <a
+                href="{{ path('referral_index') }}"
+                class="inline-flex items-center rounded-full bg-teal-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-900"
+            >
+                Patiënt verwijzen
+            </a>
+        </div>
+
+        <button
+            type="button"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-900 transition hover:border-slate-300 hover:bg-slate-50 lg:hidden"
+            aria-label="Menu openen"
+        >
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                class="h-5 w-5"
+                aria-hidden="true"
+            >
+                <path
+                    stroke-linecap="round"
+                    d="M4 7h16M4 12h16M4 17h16"
+                />
+            </svg>
+        </button>
+
+    </div>
+</header>

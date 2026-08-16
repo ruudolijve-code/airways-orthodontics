@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>
+        {% block title %}Airways Orthodontics{% endblock %}
+    </title>
+
+    <meta
+        name="description"
+        content="{% block meta_description %}Multidisciplinaire screening en begeleiding bij luchtweg-, ademhalings- en slaapgerelateerde klachten.{% endblock %}"
+    >
+
+    {% block stylesheets %}
+    {% endblock %}
+
+    {% block javascripts %}
+        {% block importmap %}
+            {{ importmap('app') }}
+        {% endblock %}
+    {% endblock %}
+</head>
+
+<body class="min-h-screen bg-white text-slate-900 antialiased">
+
+    {% include 'partials/_header.html.twig' %}
+
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+
+    {% include 'partials/_footer.html.twig' %}
+
+</body>
+</html>

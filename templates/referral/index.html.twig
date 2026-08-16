@@ -1,0 +1,283 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Patiënt verwijzen | Airways Orthodontics
+{% endblock %}
+
+{% block meta_description %}
+    Verwijs een patiënt met mondademhaling, snurken, slaapgerelateerde ademhalingsproblemen of afwijkende kaakontwikkeling naar Airways Orthodontics.
+{% endblock %}
+
+{% block body %}
+
+<section class="bg-[#f4f5f1] py-20 lg:py-28">
+
+    <div class="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2 lg:px-8">
+
+        <div>
+
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">
+                Voor verwijzers
+            </p>
+
+            <h1 class="mt-5 text-5xl font-semibold tracking-tight text-slate-950 lg:text-6xl">
+                Verwijs een patiënt
+                <span class="text-teal-700">
+                    met vertrouwen.
+                </span>
+            </h1>
+
+            <p class="mt-8 max-w-2xl text-xl leading-9 text-slate-600">
+                Heeft u een patiënt met klachten zoals mondademhaling,
+                snurken, slaapgerelateerde ademhalingsproblemen of een
+                afwijkende kaakontwikkeling? Wij beoordelen iedere patiënt
+                vanuit een multidisciplinaire visie op ademhaling,
+                kaakontwikkeling en algemene gezondheid.
+            </p>
+
+            <div class="mt-10 flex flex-wrap gap-4">
+
+                <a
+                    href="#contact"
+                    class="inline-flex items-center rounded-full bg-teal-950 px-6 py-3.5 font-semibold text-white transition hover:bg-teal-900"
+                >
+                    Neem contact op
+                </a>
+
+                <a
+                    href="#werkwijze"
+                    class="inline-flex items-center rounded-full border border-slate-300 px-6 py-3.5 font-semibold text-slate-900 transition hover:bg-white"
+                >
+                    Bekijk onze werkwijze
+                </a>
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <img
+                src="{{ asset('images/home/doctor.png') }}"
+                alt="Multidisciplinaire beoordeling"
+                class="rounded-[2rem] shadow-xl"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="bg-white py-24">
+
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+        <div class="max-w-3xl">
+
+            <h2 class="text-4xl font-semibold text-slate-950">
+                Wanneer is verwijzen zinvol?
+            </h2>
+
+            <p class="mt-6 text-lg leading-8 text-slate-600">
+                Herkent u één of meer van onderstaande signalen? Dan kan een
+                multidisciplinaire beoordeling bijdragen aan een gerichte
+                diagnose en passend behandeladvies.
+            </p>
+
+        </div>
+
+        <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+            {% set complaints = [
+                'Mondademhaling',
+                'Snurken',
+                'Slaapapneu',
+                'Vermoeidheid',
+                'Afwijkende kaakontwikkeling',
+                'Onrustige slaap'
+            ] %}
+
+            {% for complaint in complaints %}
+
+                <article class="rounded-3xl border border-slate-200 p-8">
+
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-teal-50 text-teal-700">
+
+                        ✓
+
+                    </div>
+
+                    <h3 class="mt-6 text-xl font-semibold text-slate-950">
+                        {{ complaint }}
+                    </h3>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section
+    id="werkwijze"
+    class="bg-[#f8faf9] py-24"
+>
+
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+        <div class="text-center">
+
+            <h2 class="text-4xl font-semibold text-slate-950">
+                Zo verloopt een verwijzing
+            </h2>
+
+        </div>
+
+        <div class="mt-16 grid gap-8 lg:grid-cols-4">
+
+            {% set steps = [
+                {
+                    number: '01',
+                    title: 'Aanmelding',
+                    text: 'Neem telefonisch of per e-mail contact met ons op.'
+                },
+                {
+                    number: '02',
+                    title: 'Oriënterend gesprek',
+                    text: 'Wij bespreken de hulpvraag en brengen de klachten zorgvuldig in kaart.'
+                },
+                {
+                    number: '03',
+                    title: 'Multidisciplinair overleg',
+                    text: 'Afhankelijk van de casus worden de relevante disciplines betrokken.'
+                },
+                {
+                    number: '04',
+                    title: 'Advies',
+                    text: 'U ontvangt een duidelijke terugkoppeling en behandeladvies.'
+                }
+            ] %}
+
+            {% for step in steps %}
+
+                <article class="rounded-3xl bg-white p-8 shadow-sm">
+
+                    <p class="text-sm font-semibold tracking-[0.18em] text-teal-700">
+                        {{ step.number }}
+                    </p>
+
+                    <h3 class="mt-5 text-2xl font-semibold text-slate-950">
+                        {{ step.title }}
+                    </h3>
+
+                    <p class="mt-4 leading-7 text-slate-600">
+                        {{ step.text }}
+                    </p>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="bg-white py-24">
+
+    <div class="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2 lg:px-8">
+
+        <div>
+
+            <h2 class="text-4xl font-semibold text-slate-950">
+                Waarom Airways Orthodontics?
+            </h2>
+
+            <ul class="mt-10 space-y-6">
+
+                <li class="flex gap-4">
+                    <span class="text-teal-700">✓</span>
+                    <span>Multidisciplinaire beoordeling.</span>
+                </li>
+
+                <li class="flex gap-4">
+                    <span class="text-teal-700">✓</span>
+                    <span>Samenwerking tussen meerdere disciplines.</span>
+                </li>
+
+                <li class="flex gap-4">
+                    <span class="text-teal-700">✓</span>
+                    <span>Persoonlijke terugkoppeling aan verwijzers.</span>
+                </li>
+
+                <li class="flex gap-4">
+                    <span class="text-teal-700">✓</span>
+                    <span>Meerdere locaties binnen het samenwerkingsverband.</span>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div
+            id="contact"
+            class="rounded-[2rem] bg-teal-950 p-10 text-white"
+        >
+
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-white/70">
+                Contact voor verwijzers
+            </p>
+
+            <h2 class="mt-4 text-3xl font-semibold">
+                Wij denken graag met u mee.
+            </h2>
+
+            <div class="mt-10 space-y-6 text-lg">
+
+                <p>
+                    <strong>Airways Orthodontics</strong><br>
+                    Antillenstraat 25<br>
+                    7556 AV Hengelo
+                </p>
+
+                <p>
+                    <strong>Telefoon</strong><br>
+                    <a href="tel:+31747920080">
+                        +31 (0)74 792 00 80
+                    </a>
+                </p>
+
+                <p>
+                    <strong>Verwijzingen</strong><br>
+                    <a href="mailto:verwijzers@airways-orthodontics.nl">
+                        verwijzers@airways-orthodontics.nl
+                    </a>
+                </p>
+
+            </div>
+
+            <a
+                href="mailto:verwijzers@airways-orthodontics.nl"
+                class="mt-10 inline-flex rounded-full bg-white px-6 py-3.5 font-semibold text-teal-950 transition hover:bg-slate-100"
+            >
+                Neem contact op
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
