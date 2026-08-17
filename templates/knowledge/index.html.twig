@@ -1,24 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-Kennisbank | Airways Orthodontics
+    Kennisbank | Airways Orthodontics
 {% endblock %}
 
 {% block body %}
 
 <section class="relative overflow-hidden bg-gradient-to-br from-teal-950 via-teal-900 to-slate-900 text-white">
-
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,.08),transparent_55%)]"></div>
 
     <div class="relative mx-auto max-w-7xl px-6 py-24 lg:flex lg:items-center lg:gap-20 lg:px-8 lg:py-32">
-
         <div class="max-w-3xl">
-
             <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-300">
                 Airways Kennisbank
             </p>
 
-            <h1 class="mt-6 text-5xl font-semibold tracking-tight leading-tight">
+            <h1 class="mt-6 text-5xl font-semibold leading-tight tracking-tight">
                 Betrouwbare informatie over ademhaling, slaap en kaakontwikkeling.
             </h1>
 
@@ -28,70 +25,61 @@ Kennisbank | Airways Orthodontics
                 kaakontwikkeling, slaap en orthodontie. Alle informatie is
                 geschreven vanuit de visie van een multidisciplinair behandelteam.
             </p>
-
         </div>
-
     </div>
-
 </section>
 
 
-
 <section class="bg-white py-24">
-
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-
         <div class="mx-auto max-w-3xl text-center">
-
             <h2 class="text-4xl font-semibold text-slate-950">
                 Waar bent u naar op zoek?
             </h2>
 
             <p class="mt-6 text-lg leading-8 text-slate-600">
-                Kies een onderwerp of ontdek onze meest gelezen artikelen.
+                Kies een onderwerp, verdiep u in medische achtergronden
+                of ontdek onze meest gelezen artikelen.
             </p>
-
         </div>
 
         <div class="mx-auto mt-12 max-w-3xl">
-
             <input
                 type="search"
                 placeholder="Zoek in de kennisbank..."
                 class="w-full rounded-2xl border border-slate-200 px-6 py-5 text-lg shadow-sm focus:border-teal-700 focus:outline-none"
             >
-
         </div>
-
     </div>
-
 </section>
 
 
-
 <section class="bg-slate-50 py-24">
-
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mb-14 max-w-3xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+                Kennisbank
+            </p>
 
-        <div class="mb-14">
-
-            <h2 class="text-4xl font-semibold text-slate-950">
+            <h2 class="mt-4 text-4xl font-semibold text-slate-950">
                 Onderwerpen
             </h2>
 
+            <p class="mt-5 text-lg leading-8 text-slate-600">
+                Bekijk informatie over ademhaling, slaap, groei,
+                orthodontie en andere onderwerpen die binnen onze
+                multidisciplinaire aanpak een belangrijke rol spelen.
+            </p>
         </div>
 
         <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-
             {% for category in categories %}
-
-                <article class="rounded-3xl bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-
+                <article class="flex h-full flex-col rounded-3xl bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
                     <h3 class="text-2xl font-semibold text-slate-950">
                         {{ category.title }}
                     </h3>
 
-                    <p class="mt-5 leading-8 text-slate-600">
+                    <p class="mt-5 flex-1 leading-8 text-slate-600">
                         {{ category.description }}
                     </p>
 
@@ -99,49 +87,142 @@ Kennisbank | Airways Orthodontics
                         href="#"
                         class="mt-8 inline-flex items-center font-semibold text-teal-700 hover:text-teal-900"
                     >
-                        Bekijk artikelen →
+                        Bekijk artikelen
 
+                        <svg
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            class="ml-2 h-4 w-4"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M4 10h12m-5-5 5 5-5 5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
                     </a>
-
                 </article>
-
             {% endfor %}
-
         </div>
-
     </div>
-
 </section>
 
 
-
 <section class="bg-white py-24">
-
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-
-        <div class="flex items-end justify-between">
-
-            <div>
-
+        <div class="grid gap-12 lg:grid-cols-[0.8fr_2fr] lg:items-start">
+            <div class="max-w-xl">
                 <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
-                    Uitgelicht
+                    Medische verdieping
                 </p>
 
                 <h2 class="mt-4 text-4xl font-semibold text-slate-950">
-                    Populaire artikelen
+                    De medische achtergrond
                 </h2>
 
+                <p class="mt-6 text-lg leading-8 text-slate-600">
+                    Voor patiënten, verwijzers en zorgprofessionals die meer
+                    willen weten over de anatomische en fysiologische processen
+                    achter ademhaling, slaap en craniofaciale ontwikkeling.
+                </p>
+
+                <p class="mt-6 leading-8 text-slate-500">
+                    Deze dossiers gaan dieper in op medische begrippen en
+                    mechanismen die regelmatig terugkomen binnen de
+                    multidisciplinaire diagnostiek en behandeling.
+                </p>
             </div>
 
+            <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+                {% for topic in medicalTopics %}
+                    <article class="group flex h-full flex-col rounded-3xl border border-slate-200 bg-slate-50 p-8 transition hover:border-teal-700 hover:bg-white hover:shadow-lg">
+                        <div class="mb-6 flex h-11 w-11 items-center justify-center rounded-2xl bg-teal-950 text-white">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.6"
+                                class="h-5 w-5"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M9 3h6M10 3v5.5L5.5 17A2.5 2.5 0 0 0 7.7 21h8.6a2.5 2.5 0 0 0 2.2-4L14 8.5V3"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="M8 15h8"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </div>
+
+                        <h3 class="text-2xl font-semibold leading-tight text-slate-950">
+                            {{ topic.title }}
+                        </h3>
+
+                        {% if topic.subtitle is defined and topic.subtitle %}
+                            <p class="mt-2 text-sm font-semibold text-teal-700">
+                                {{ topic.subtitle }}
+                            </p>
+                        {% endif %}
+
+                        <p class="mt-5 flex-1 leading-8 text-slate-600">
+                            {{ topic.description }}
+                        </p>
+
+                        <a
+                            href="#"
+                            class="mt-8 inline-flex items-center font-semibold text-teal-700 group-hover:text-teal-900"
+                        >
+                            Bekijk dossier
+
+                            <svg
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                class="ml-2 h-4 w-4 transition group-hover:translate-x-1"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M4 10h12m-5-5 5 5-5 5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="bg-slate-50 py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+                Uitgelicht
+            </p>
+
+            <h2 class="mt-4 text-4xl font-semibold text-slate-950">
+                Populaire artikelen
+            </h2>
+
+            <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
+                Veelgelezen artikelen over onderwerpen en vragen die regelmatig
+                terugkomen bij patiënten, ouders en verwijzers.
+            </p>
         </div>
 
-
         <div class="mt-14 grid gap-8 lg:grid-cols-2 xl:grid-cols-3">
-
             {% for article in featuredArticles %}
-
                 <article class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-8 transition hover:border-teal-700 hover:shadow-lg">
-
                     <span class="inline-flex w-fit rounded-full bg-teal-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-teal-700">
                         {{ article.category }}
                     </span>
@@ -166,6 +247,7 @@ Kennisbank | Airways Orthodontics
                             stroke="currentColor"
                             stroke-width="1.8"
                             class="ml-2 h-4 w-4"
+                            aria-hidden="true"
                         >
                             <path
                                 d="M4 10h12m-5-5 5 5-5 5"
@@ -173,93 +255,72 @@ Kennisbank | Airways Orthodontics
                                 stroke-linejoin="round"
                             />
                         </svg>
-
                     </a>
-
                 </article>
-
             {% endfor %}
-
         </div>
-
     </div>
-
 </section>
 
 
-
 <section class="bg-slate-900 py-24 text-white">
-
     <div class="mx-auto max-w-5xl px-6 text-center">
+        <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-300">
+            Multidisciplinaire visie
+        </p>
 
-        <h2 class="text-4xl font-semibold">
+        <h2 class="mt-4 text-4xl font-semibold">
             Kennis gebaseerd op samenwerking
         </h2>
 
         <p class="mx-auto mt-8 max-w-3xl text-lg leading-9 text-slate-300">
-
             De artikelen in onze kennisbank zijn gebaseerd op actuele inzichten
             uit de orthodontie, kaakchirurgie, ademfysiologie,
-            slaapgeneeskunde en aanverwante vakgebieden.
-            Door deze disciplines met elkaar te verbinden ontstaat een
-            completer beeld van de gezondheid van de patiënt.
-
+            slaapgeneeskunde en aanverwante vakgebieden. Door deze disciplines
+            met elkaar te verbinden ontstaat een completer beeld van de
+            gezondheid en ontwikkeling van de patiënt.
         </p>
 
         <div class="mt-12">
-
             <a
                 href="{{ path('collaboration_index') }}"
                 class="inline-flex items-center rounded-full bg-white px-8 py-4 font-semibold text-teal-950 transition hover:bg-slate-100"
             >
                 Bekijk onze samenwerking
-
             </a>
-
         </div>
-
     </div>
-
 </section>
 
 
-
 <section class="bg-teal-950 py-24 text-white">
-
     <div class="mx-auto max-w-5xl px-6 text-center">
-
         <h2 class="text-4xl font-semibold">
             Mist u een onderwerp?
         </h2>
 
         <p class="mx-auto mt-8 max-w-3xl text-lg leading-9 text-teal-100">
-
-            Onze kennisbank wordt voortdurend uitgebreid.
-            Heeft u een vraag over ademhaling, orthodontie of slaap die nog
+            Onze kennisbank wordt voortdurend uitgebreid. Heeft u een vraag
+            over ademhaling, orthodontie, slaap of kaakontwikkeling die nog
             niet wordt behandeld? Neem gerust contact met ons op.
-
         </p>
 
         <div class="mt-12 flex flex-wrap justify-center gap-5">
-
             <a
                 href="{{ path('contact_index') }}"
-                class="rounded-full bg-white px-8 py-4 font-semibold text-teal-950"
+                class="rounded-full bg-white px-8 py-4 font-semibold text-teal-950 transition hover:bg-slate-100"
             >
                 Neem contact op
             </a>
 
             <a
                 href="{{ path('referral_index') }}"
-                class="rounded-full border border-white px-8 py-4 font-semibold"
+                class="rounded-full border border-white px-8 py-4 font-semibold transition hover:bg-white hover:text-teal-950"
             >
                 Patiënt verwijzen
             </a>
-
         </div>
-
     </div>
-
 </section>
 
 {% endblock %}

@@ -48,23 +48,26 @@ final class KnowledgeController extends AbstractController
                 'title' => 'Wetenschap',
                 'description' => 'Achtergrondinformatie en onderzoek over ademhaling, slaap en craniofaciale ontwikkeling.',
             ],
+        ];
 
+        $medicalTopics = [
             [
-                'slug' => 'Hypoxie',
-                'title' => 'Gebrekkige zuurstofopname (Hypoxie)',
-                'description' => 'Chronische mondademhaling en slaapapneu leiden direct tot een verminderde en gefragmenteerde zuurstofopname, ook wel een hypoxische micro-omgeving genoemd.',
+                'slug' => 'anatomie',
+                'title' => 'Anatomie',
+                'subtitle' => 'Van bovenkaak tot luchtweg',
+                'description' => 'Over de anatomische samenhang tussen bovenkaak, gehemelte, neusruimte, tongpositie en luchtweg.',
             ],
-
+            [
+                'slug' => 'hypoxie',
+                'title' => 'Hypoxie',
+                'subtitle' => 'Gebrekkige zuurstofopname',
+                'description' => 'Over verminderde of herhaald onderbroken zuurstofvoorziening en de mogelijke relatie met slaapgerelateerde ademhalingsproblemen.',
+            ],
             [
                 'slug' => 'auto-immuunziekten',
                 'title' => 'Auto-immuunziekten',
-                'description' => 'Hypoxie verstoort de balans tussen T-helpercellen (Th17, die ontstekingen aanjagen) en regulatoire T-cellen (Tregs, die het immuunsysteem remmen). Dit heft de immuuntolerantie op.',
-            ],
-
-            [
-                'slug' => 'anatomisch',
-                'title' => 'Anatomisch',
-                'description' => 'Een smalle bovenkaak zorgt vaak voor te weinig ruimte voor de tanden, een hoog gehemelte en een verminderde neusademhaling.',
+                'subtitle' => 'Immuunregulatie en ontstekingsprocessen',
+                'description' => 'Medische achtergrond over immuunregulatie, ontstekingsprocessen en mogelijke relaties met hypoxie en chronische ademhalingsproblematiek.',
             ],
         ];
 
@@ -109,6 +112,7 @@ final class KnowledgeController extends AbstractController
 
         return $this->render('knowledge/index.html.twig', [
             'categories' => $categories,
+            'medicalTopics' => $medicalTopics,
             'featuredArticles' => $featuredArticles,
         ]);
     }
