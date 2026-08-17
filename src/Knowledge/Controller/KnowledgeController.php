@@ -48,6 +48,24 @@ final class KnowledgeController extends AbstractController
                 'title' => 'Wetenschap',
                 'description' => 'Achtergrondinformatie en onderzoek over ademhaling, slaap en craniofaciale ontwikkeling.',
             ],
+
+            [
+                'slug' => 'Hypoxie',
+                'title' => 'Gebrekkige zuurstofopname (Hypoxie)',
+                'description' => 'Chronische mondademhaling en slaapapneu leiden direct tot een verminderde en gefragmenteerde zuurstofopname, ook wel een hypoxische micro-omgeving genoemd.',
+            ],
+
+            [
+                'slug' => 'auto-immuunziekten',
+                'title' => 'Auto-immuunziekten',
+                'description' => 'Hypoxie verstoort de balans tussen T-helpercellen (Th17, die ontstekingen aanjagen) en regulatoire T-cellen (Tregs, die het immuunsysteem remmen). Dit heft de immuuntolerantie op.',
+            ],
+
+            [
+                'slug' => 'anatomisch',
+                'title' => 'Anatomisch',
+                'description' => 'Een smalle bovenkaak zorgt vaak voor te weinig ruimte voor de tanden, een hoog gehemelte en een verminderde neusademhaling.',
+            ],
         ];
 
         $featuredArticles = [
