@@ -29,14 +29,14 @@ final class CollaborationController extends AbstractController
                     [
                         'name' => 'Alexander Alink',
                         'function' => 'Tandarts & Orthodontics MSc',
-                        'role' => 'Orthodotische behandeling door kaakverbeding waarmee ademhalingsproblemen en kaakgerelateerde klachten zich kunnen verbeteren',
+                        'role' => 'Orthodontische behandeling door kaakverbeding waarmee ademhalingsproblemen en kaakgerelateerde klachten zich kunnen verbeteren',
                         'photo' => 'images/collaboration/professionals/alexander-alink.png',
                         'BIG' => '19933885302',
                     ],
                     [
                         'name' => 'Alexandra Redmer',
                         'function' => 'Orthodontics MSc',
-                        'role' => 'Orthodotische behandeling door kaakverbeding waarmee ademhalingsproblemen en kaakgerelateerde klachten zich kunnen verbeteren',
+                        'role' => 'Orthodontische behandeling door kaakverbeding waarmee ademhalingsproblemen en kaakgerelateerde klachten zich kunnen verbeteren',
                         'photo' => 'images/collaboration/professionals/alexandra-redmer.jpg',
                     ],
                 ],
