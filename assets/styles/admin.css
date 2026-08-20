@@ -1,4 +1,4 @@
-@import '../vendor/ckeditor5/ckeditor5.css';
+@import '../ckeditor5/ckeditor5.css';
 
 :root {
     --color-primary: #0f766e;

@@ -15,7 +15,7 @@ import {
     PasteFromOffice,
     Table,
     TableToolbar,
-} from '../vendor/ckeditor5/ckeditor5.bundle.js';
+} from '../ckeditor5/ckeditor5.bundle.js';
 
 export default class extends Controller {
     async connect() {
