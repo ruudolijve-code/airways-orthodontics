@@ -1,0 +1,237 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ category.name }} | Kennisbank | Airways Orthodontics
+{% endblock %}
+
+{% block meta_description %}
+    {{ category.description ?: 'Lees meer over ' ~ category.name ~ ' binnen de kennisbank van Airways Orthodontics.' }}
+{% endblock %}
+
+{% block body %}
+
+<section class="relative overflow-hidden bg-gradient-to-br from-teal-950 via-teal-900 to-slate-900 text-white">
+
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,.08),transparent_55%)]"></div>
+
+    <div class="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+
+        <a
+            href="{{ path('knowledge_index') }}"
+            class="inline-flex items-center gap-2 text-sm font-medium text-teal-300 transition hover:text-white"
+        >
+            <svg
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                class="h-4 w-4"
+                aria-hidden="true"
+            >
+                <path
+                    d="M12.5 4.5 7 10l5.5 5.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+            </svg>
+
+            Terug naar de kennisbank
+        </a>
+
+        <p class="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-teal-300">
+            Kennisbank
+        </p>
+
+        <h1 class="mt-5 max-w-4xl text-5xl font-semibold leading-tight tracking-tight">
+            {{ category.name }}
+        </h1>
+
+        {% if category.description %}
+            <p class="mt-8 max-w-3xl text-xl leading-9 text-slate-200">
+                {{ category.description }}
+            </p>
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<section class="bg-slate-50 py-20 lg:py-24">
+
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+        <div class="max-w-3xl">
+
+            <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+                Artikelen
+            </p>
+
+            <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                Artikelen over {{ category.name|lower }}
+            </h2>
+
+            {% if articles is not empty %}
+                <p class="mt-6 text-lg leading-8 text-slate-600">
+                    Bekijk achtergrondinformatie, uitleg en artikelen binnen
+                    het onderwerp {{ category.name|lower }}.
+                </p>
+            {% endif %}
+
+        </div>
+
+
+        {% if articles is not empty %}
+
+            <div class="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+
+                {% for article in articles %}
+
+                    <article class="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+
+                        {% if article.featuredImage %}
+
+                            <a
+                                href="{{ path('knowledge_article_show', {
+                                    categorySlug: category.slug,
+                                    slug: article.slug
+                                }) }}"
+                                class="block overflow-hidden"
+                            >
+                                <img
+                                    src="{{ asset('uploads/knowledge/images/' ~ article.featuredImage.filename) }}"
+                                    alt="{{ article.featuredImage.alt ?: article.title }}"
+                                    class="aspect-[16/9] w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                                    loading="lazy"
+                                >
+                            </a>
+
+                        {% endif %}
+
+                        <div class="flex flex-1 flex-col p-8">
+
+                            <div class="flex flex-wrap items-center gap-3">
+
+                                <span class="inline-flex rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-teal-700">
+                                    {{ category.name }}
+                                </span>
+
+                                {% if article.readingTime %}
+                                    <span class="text-sm text-slate-500">
+                                        {{ article.readingTime }} min. leestijd
+                                    </span>
+                                {% endif %}
+
+                            </div>
+
+                            <h3 class="mt-5 text-2xl font-semibold tracking-tight text-slate-950">
+
+                                <a
+                                    href="{{ path('knowledge_article_show', {
+                                        categorySlug: category.slug,
+                                        slug: article.slug
+                                    }) }}"
+                                    class="transition hover:text-teal-800"
+                                >
+                                    {{ article.title }}
+                                </a>
+
+                            </h3>
+
+                            {% if article.excerpt %}
+                                <p class="mt-4 flex-1 leading-7 text-slate-600">
+                                    {{ article.excerpt }}
+                                </p>
+                            {% endif %}
+
+                            <div class="mt-8">
+
+                                <a
+                                    href="{{ path('knowledge_article_show', {
+                                        categorySlug: category.slug,
+                                        slug: article.slug
+                                    }) }}"
+                                    class="inline-flex items-center font-semibold text-teal-700 transition hover:text-teal-900"
+                                >
+                                    Lees artikel
+
+                                    <svg
+                                        viewBox="0 0 20 20"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            d="M4 10h12m-5-5 5 5-5 5"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </svg>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="mt-14 rounded-3xl border border-dashed border-slate-300 bg-white p-12 text-center">
+
+                <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-teal-50">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        class="h-8 w-8 text-teal-700"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M8 6h8M8 12h8M8 18h5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        <path
+                            d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+
+                </div>
+
+                <h3 class="mt-6 text-2xl font-semibold text-slate-950">
+                    Nog geen artikelen gepubliceerd
+                </h3>
+
+                <p class="mx-auto mt-4 max-w-2xl leading-8 text-slate-600">
+                    Binnen deze categorie zijn op dit moment nog geen artikelen
+                    beschikbaar. Zodra nieuwe content wordt gepubliceerd verschijnt
+                    deze automatisch op deze pagina.
+                </p>
+
+                <a
+                    href="{{ path('knowledge_index') }}"
+                    class="mt-10 inline-flex items-center rounded-full bg-teal-900 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-teal-800"
+                >
+                    Bekijk alle categorieën
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

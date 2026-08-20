@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Inloggen | Airways Orthodontics
+{% endblock %}
+
+{% block meta_description %}
+    Beveiligde omgeving voor beheerders van Airways Orthodontics.
+{% endblock %}
+
+{% block body %}
+
+<section class="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-teal-50 py-24 lg:py-32">
+
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(13,148,136,.08),transparent_50%)]"></div>
+
+    <div class="relative mx-auto max-w-md px-6">
+
+        <div class="rounded-3xl border border-slate-200 bg-white p-10 shadow-xl">
+
+            <div class="text-center">
+
+                <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">
+                    Beheeromgeving
+                </p>
+
+                <h1 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950">
+                    Inloggen
+                </h1>
+
+                <p class="mt-4 text-sm leading-7 text-slate-600">
+                    Log in om de kennisbank en inhoud van Airways Orthodontics te beheren.
+                </p>
+
+            </div>
+
+            {% if error %}
+                <div class="mt-8 rounded-2xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-700">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mt-8 rounded-2xl border border-teal-200 bg-teal-50 px-5 py-4 text-sm text-teal-900">
+                    U bent ingelogd als
+                    <strong>{{ app.user.userIdentifier }}</strong>.
+
+                    <a
+                        href="{{ path('app_logout') }}"
+                        class="ml-2 font-semibold text-teal-700 hover:text-teal-900"
+                    >
+                        Uitloggen
+                    </a>
+                </div>
+            {% endif %}
+
+            <form
+                method="post"
+                action="{{ path('app_login') }}"
+                class="mt-8 space-y-6"
+            >
+
+                <div>
+
+                    <label
+                        for="username"
+                        class="block text-sm font-medium text-slate-700"
+                    >
+                        E-mailadres
+                    </label>
+
+                    <input
+                        id="username"
+                        name="_username"
+                        type="email"
+                        value="{{ last_username|default(lastUsername|default('')) }}"
+                        autocomplete="email"
+                        required
+                        autofocus
+                        class="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 shadow-sm transition focus:border-teal-600 focus:outline-none focus:ring-4 focus:ring-teal-100"
+                    >
+
+                </div>
+
+                <div>
+
+                    <label
+                        for="password"
+                        class="block text-sm font-medium text-slate-700"
+                    >
+                        Wachtwoord
+                    </label>
+
+                    <input
+                        id="password"
+                        name="_password"
+                        type="password"
+                        autocomplete="current-password"
+                        required
+                        class="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 shadow-sm transition focus:border-teal-600 focus:outline-none focus:ring-4 focus:ring-teal-100"
+                    >
+
+                </div>
+
+                <input
+                    type="hidden"
+                    name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}"
+                >
+
+                <button
+                    type="submit"
+                    class="inline-flex w-full items-center justify-center rounded-full bg-teal-900 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-teal-800"
+                >
+                    Inloggen
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

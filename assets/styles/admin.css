@@ -1,0 +1,29 @@
+@import '../vendor/ckeditor5/ckeditor5.css';
+
+:root {
+    --color-primary: #0f766e;
+
+    --sidebar-bg: #083344;
+    --sidebar-color: #ffffff;
+
+    --sidebar-menu-color: rgba(255, 255, 255, .82);
+    --sidebar-menu-active-bg: rgba(255, 255, 255, .10);
+    --sidebar-menu-active-color: #ffffff;
+
+    --content-bg: #f8fafc;
+}
+
+/*
+ * CKEditor
+ */
+.ck-editor {
+    width: 100%;
+}
+
+.ck-editor__editable {
+    min-height: 520px;
+}
+
+.ck-content {
+    line-height: 1.7;
+}

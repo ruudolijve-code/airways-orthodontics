@@ -1,0 +1,6 @@
+User-agent: *
+
+Disallow: /8f4a9c_admin
+Disallow: /login
+
+Sitemap: https://airwaysorthodontics.nl/sitemap.xml

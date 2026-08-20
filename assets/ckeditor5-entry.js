@@ -1,0 +1,16 @@
+export {
+    Autoformat,
+    BlockQuote,
+    Bold,
+    ClassicEditor,
+    Essentials,
+    Heading,
+    Indent,
+    Italic,
+    Link,
+    List,
+    Paragraph,
+    PasteFromOffice,
+    Table,
+    TableToolbar,
+} from 'ckeditor5';

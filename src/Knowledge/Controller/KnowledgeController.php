@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Knowledge\Controller;
 
+use App\Knowledge\Repository\KnowledgeArticleRepository;
+use App\Knowledge\Repository\KnowledgeCategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -15,41 +17,10 @@ final class KnowledgeController extends AbstractController
         name: 'knowledge_index',
         methods: ['GET'],
     )]
-    public function index(): Response
-    {
-        $categories = [
-            [
-                'slug' => 'ademhaling',
-                'title' => 'Ademhaling',
-                'description' => 'Over neusademhaling, mondademhaling, functioneel ademen en de relatie met mond- en kaakontwikkeling.',
-            ],
-            [
-                'slug' => 'slaap',
-                'title' => 'Slaap & snurken',
-                'description' => 'Informatie over snurken, slaapkwaliteit, slaapgerelateerde ademhalingsproblemen en vermoeidheid.',
-            ],
-            [
-                'slug' => 'kinderen',
-                'title' => 'Kinderen',
-                'description' => 'Signalen rond groei, mondhouding, slaap, ademhaling en ontwikkeling bij kinderen.',
-            ],
-            [
-                'slug' => 'orthodontie',
-                'title' => 'Orthodontie',
-                'description' => 'Over kaakontwikkeling, beet, kaakverbreding en de rol van orthodontie binnen een bredere aanpak.',
-            ],
-            [
-                'slug' => 'kaakchirurgie',
-                'title' => 'Kaakchirurgie',
-                'description' => 'Wanneer kaakchirurgische beoordeling of behandeling onderdeel kan zijn van het behandeltraject.',
-            ],
-            [
-                'slug' => 'wetenschap',
-                'title' => 'Wetenschap',
-                'description' => 'Achtergrondinformatie en onderzoek over ademhaling, slaap en craniofaciale ontwikkeling.',
-            ],
-        ];
-
+    public function index(
+        KnowledgeCategoryRepository $categoryRepository,
+        KnowledgeArticleRepository $articleRepository,
+    ): Response {
         $medicalTopics = [
             [
                 'slug' => 'anatomie',
@@ -71,49 +42,78 @@ final class KnowledgeController extends AbstractController
             ],
         ];
 
-        $featuredArticles = [
-            [
-                'slug' => 'wat-is-airway-orthodontics',
-                'title' => 'Wat is Airway Orthodontics?',
-                'excerpt' => 'Een uitleg over de samenhang tussen orthodontie, ademhaling, slaap en kaakontwikkeling.',
-                'category' => 'Orthodontie',
-            ],
-            [
-                'slug' => 'waarom-neusademhaling-belangrijk-is',
-                'title' => 'Waarom neusademhaling belangrijk is',
-                'excerpt' => 'Wat neusademhaling betekent voor mondfunctie, slaap en ontwikkeling.',
-                'category' => 'Ademhaling',
-            ],
-            [
-                'slug' => 'snurken-bij-kinderen',
-                'title' => 'Snurken bij kinderen',
-                'excerpt' => 'Wanneer snurken onschuldig kan zijn en wanneer verder onderzoek verstandig is.',
-                'category' => 'Kinderen',
-            ],
-            [
-                'slug' => 'mondademhaling-bij-kinderen',
-                'title' => 'Mondademhaling bij kinderen',
-                'excerpt' => 'Hoe u chronische mondademhaling herkent en waarom de oorzaak belangrijk is.',
-                'category' => 'Kinderen',
-            ],
-            [
-                'slug' => 'smalle-bovenkaak',
-                'title' => 'Wat betekent een smalle bovenkaak?',
-                'excerpt' => 'Over groei, beet, beschikbare ruimte en mogelijke behandelopties.',
-                'category' => 'Orthodontie',
-            ],
-            [
-                'slug' => 'wordt-airway-behandeling-vergoed',
-                'title' => 'Wordt een behandeling vergoed?',
-                'excerpt' => 'Een eerste uitleg over orthodontie, aanvullende verzekeringen en medisch-specialistische zorg.',
-                'category' => 'Vergoeding',
-            ],
-        ];
-
         return $this->render('knowledge/index.html.twig', [
-            'categories' => $categories,
+            'categories' => $categoryRepository->findPublished(),
             'medicalTopics' => $medicalTopics,
-            'featuredArticles' => $featuredArticles,
+            'featuredArticles' => $articleRepository->findFeatured(),
+        ]);
+    }
+
+    #[Route(
+        '/kennisbank/{slug}',
+        name: 'knowledge_category_show',
+        methods: ['GET'],
+    )]
+    public function category(
+        string $slug,
+        KnowledgeCategoryRepository $categoryRepository,
+        KnowledgeArticleRepository $articleRepository,
+    ): Response {
+        $category = $categoryRepository->findOneBy([
+            'slug' => $slug,
+            'isPublished' => true,
+        ]);
+
+        if ($category === null) {
+            throw $this->createNotFoundException(
+                'Deze kennisbankcategorie bestaat niet of is niet gepubliceerd.',
+            );
+        }
+
+        return $this->render('knowledge/category.html.twig', [
+            'category' => $category,
+            'articles' => $articleRepository->findPublishedByCategory(
+                $category,
+            ),
+        ]);
+    }
+
+    #[Route(
+        '/kennisbank/{categorySlug}/{slug}',
+        name: 'knowledge_article_show',
+        methods: ['GET'],
+    )]
+    public function article(
+        string $categorySlug,
+        string $slug,
+        KnowledgeCategoryRepository $categoryRepository,
+        KnowledgeArticleRepository $articleRepository,
+    ): Response {
+        $category = $categoryRepository->findOneBy([
+            'slug' => $categorySlug,
+            'isPublished' => true,
+        ]);
+
+        if ($category === null) {
+            throw $this->createNotFoundException(
+                'Deze kennisbankcategorie bestaat niet of is niet gepubliceerd.',
+            );
+        }
+
+        $article = $articleRepository->findPublishedArticle(
+            $category,
+            $slug,
+        );
+
+        if ($article === null) {
+            throw $this->createNotFoundException(
+                'Dit kennisbankartikel bestaat niet of is niet gepubliceerd.',
+            );
+        }
+
+        return $this->render('knowledge/article.html.twig', [
+            'category' => $category,
+            'article' => $article,
         ]);
     }
 }
