@@ -7,6 +7,7 @@ namespace App\Admin\Controller;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+use App\Knowledge\Entity\KnowledgeReference;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -45,29 +46,38 @@ final class DashboardController extends AbstractDashboardController
             'fas fa-gauge-high',
         );
 
-        /*
-         * Kennisbank
-         */
-        yield MenuItem::linkTo(
-            KnowledgeArticleCrudController::class,
-            'Artikelen',
-            'fas fa-newspaper',
-        )
-            ->setAction(Action::INDEX);
+    /*
+    * Kennisbank
+    */
+    yield MenuItem::section('Kennisbank');
 
-        yield MenuItem::linkTo(
-            KnowledgeCategoryCrudController::class,
-            'Categorieën',
-            'fas fa-folder-open',
-        )
-            ->setAction(Action::INDEX);
+    yield MenuItem::linkTo(
+        KnowledgeCategoryCrudController::class,
+        'Categorieën',
+        'fas fa-folder-open',
+    )
+        ->setAction(Action::INDEX);
 
-        yield MenuItem::linkTo(
-            KnowledgeImageCrudController::class,
-            'Afbeeldingen',
-            'fas fa-image',
-        )
-            ->setAction(Action::INDEX);
+    yield MenuItem::linkTo(
+        KnowledgeArticleCrudController::class,
+        'Artikelen & dossiers',
+        'fas fa-newspaper',
+    )
+        ->setAction(Action::INDEX);
+
+    yield MenuItem::linkTo(
+        KnowledgeReferenceCrudController::class,
+        'Wetenschappelijke publicaties',
+        'fas fa-book-medical',
+    )
+        ->setAction(Action::INDEX);
+
+    yield MenuItem::linkTo(
+        KnowledgeImageCrudController::class,
+        'Afbeeldingen',
+        'fas fa-image',
+    )
+        ->setAction(Action::INDEX);
 
         /*
          * Website

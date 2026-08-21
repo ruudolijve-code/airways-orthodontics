@@ -24,3 +24,6 @@
 **/.DS_Store
 /public/build/
 ###< Airways local/generated ###
+
+/node_modules/
+/airways-content.sql

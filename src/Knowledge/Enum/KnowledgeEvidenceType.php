@@ -28,4 +28,15 @@ enum KnowledgeEvidenceType: string
             self::OTHER => 'Overig',
         };
     }
+
+    public static function choices(): array
+    {
+        $choices = [];
+
+        foreach (self::cases() as $case) {
+            $choices[$case->label()] = $case;
+        }
+
+        return $choices;
+    }
 }

@@ -50,8 +50,17 @@ class KnowledgeReference
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $pdfFilename = null;
 
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $license = null;
+
     #[ORM\Column(type: 'text', nullable: true)]
     private ?string $summary = null;
+
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $clinicalRelevance = null;
+
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $limitations = null;
 
     #[ORM\Column(options: ['default' => 0])]
     private int $sortOrder = 0;
@@ -196,6 +205,20 @@ class KnowledgeReference
         return $this;
     }
 
+    public function getLicense(): ?string
+    {
+        return $this->license;
+    }
+
+    public function setLicense(?string $license): self
+    {
+        $this->license = $license !== null
+            ? trim($license)
+            : null;
+
+        return $this;
+    }
+
     public function getSummary(): ?string
     {
         return $this->summary;
@@ -205,6 +228,34 @@ class KnowledgeReference
     {
         $this->summary = $summary !== null
             ? trim($summary)
+            : null;
+
+        return $this;
+    }
+
+    public function getClinicalRelevance(): ?string
+    {
+        return $this->clinicalRelevance;
+    }
+
+    public function setClinicalRelevance(?string $clinicalRelevance): self
+    {
+        $this->clinicalRelevance = $clinicalRelevance !== null
+            ? trim($clinicalRelevance)
+            : null;
+
+        return $this;
+    }
+
+    public function getLimitations(): ?string
+    {
+        return $this->limitations;
+    }
+
+    public function setLimitations(?string $limitations): self
+    {
+        $this->limitations = $limitations !== null
+            ? trim($limitations)
             : null;
 
         return $this;
