@@ -1,4 +1,6 @@
 import './stimulus_bootstrap.js';
+
+import Alpine from 'alpinejs';
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -7,4 +9,7 @@ import './stimulus_bootstrap.js';
  */
 import './styles/app.css';
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+window.Alpine = Alpine;
+
+Alpine.start();
+
