@@ -1,4 +1,7 @@
-<header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur">
+<header
+    x-data="{ mobileMenuOpen: false }"
+    class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur"
+>
     <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
 
         <a
@@ -47,6 +50,7 @@
             </div>
         </a>
 
+        {# Desktop navigation #}
         <nav
             class="hidden items-center gap-8 lg:flex"
             aria-label="Hoofdnavigatie"
@@ -110,12 +114,18 @@
             </a>
         </div>
 
+        {# Mobile menu button #}
         <button
             type="button"
+            @click="mobileMenuOpen = !mobileMenuOpen"
+            :aria-expanded="mobileMenuOpen"
+            aria-controls="mobile-menu"
             class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-900 transition hover:border-slate-300 hover:bg-slate-50 lg:hidden"
             aria-label="Menu openen"
         >
+            {# Hamburger #}
             <svg
+                x-show="!mobileMenuOpen"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -128,7 +138,112 @@
                     d="M4 7h16M4 12h16M4 17h16"
                 />
             </svg>
+
+            {# Close icon #}
+            <svg
+                x-show="mobileMenuOpen"
+                x-cloak
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                class="h-5 w-5"
+                aria-hidden="true"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 6l12 12M18 6L6 18"
+                />
+            </svg>
         </button>
 
+    </div>
+
+    {# Mobile navigation #}
+    <div
+        id="mobile-menu"
+        x-show="mobileMenuOpen"
+        x-cloak
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 -translate-y-2"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 -translate-y-2"
+        @click.outside="mobileMenuOpen = false"
+        class="border-t border-slate-200 bg-white lg:hidden"
+    >
+        <nav
+            class="mx-auto max-w-7xl px-6 py-6"
+            aria-label="Mobiele navigatie"
+        >
+            <div class="flex flex-col">
+
+                <a
+                    href="{{ path('home', {'_fragment': 'klachten'}) }}"
+                    @click="mobileMenuOpen = false"
+                    class="border-b border-slate-100 py-4 text-base font-medium text-slate-700 transition hover:text-teal-950"
+                >
+                    Klachten
+                </a>
+
+                <a
+                    href="{{ path('home', {'_fragment': 'patienten'}) }}"
+                    @click="mobileMenuOpen = false"
+                    class="border-b border-slate-100 py-4 text-base font-medium text-slate-700 transition hover:text-teal-950"
+                >
+                    Voor wie?
+                </a>
+
+                <a
+                    href="{{ path('home', {'_fragment': 'aanpak'}) }}"
+                    @click="mobileMenuOpen = false"
+                    class="border-b border-slate-100 py-4 text-base font-medium text-slate-700 transition hover:text-teal-950"
+                >
+                    Onze aanpak
+                </a>
+
+                <a
+                    href="{{ path('collaboration_index') }}"
+                    @click="mobileMenuOpen = false"
+                    class="border-b border-slate-100 py-4 text-base font-medium text-slate-700 transition hover:text-teal-950"
+                >
+                    Samenwerking
+                </a>
+
+                <a
+                    href="{{ path('home', {'_fragment': 'verwijzers'}) }}"
+                    @click="mobileMenuOpen = false"
+                    class="border-b border-slate-100 py-4 text-base font-medium text-slate-700 transition hover:text-teal-950"
+                >
+                    Voor verwijzers
+                </a>
+
+                <a
+                    href="{{ path('home', {'_fragment': 'kennisbank'}) }}"
+                    @click="mobileMenuOpen = false"
+                    class="border-b border-slate-100 py-4 text-base font-medium text-slate-700 transition hover:text-teal-950"
+                >
+                    Kennisbank
+                </a>
+
+                <a
+                    href="{{ path('contact_index') }}"
+                    @click="mobileMenuOpen = false"
+                    class="py-4 text-base font-medium text-slate-700 transition hover:text-teal-950"
+                >
+                    Contact
+                </a>
+
+            </div>
+
+            <a
+                href="{{ path('referral_index') }}"
+                class="mt-5 flex w-full items-center justify-center rounded-full bg-teal-950 px-5 py-4 text-sm font-semibold text-white transition hover:bg-teal-900"
+            >
+                Patiënt verwijzen
+            </a>
+        </nav>
     </div>
 </header>
