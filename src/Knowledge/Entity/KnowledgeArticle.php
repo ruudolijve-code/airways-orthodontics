@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace App\Knowledge\Entity;
 
+use App\Knowledge\Enum\KnowledgeArticleType;
 use App\Knowledge\Enum\KnowledgeAudience;
 use App\Knowledge\Repository\KnowledgeArticleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: KnowledgeArticleRepository::class)]
@@ -21,6 +24,13 @@ class KnowledgeArticle
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private ?KnowledgeCategory $category = null;
+
+    #[ORM\Column(
+        length: 30,
+        enumType: KnowledgeArticleType::class,
+        options: ['default' => 'article'],
+    )]
+    private KnowledgeArticleType $type = KnowledgeArticleType::ARTICLE;
 
     #[ORM\Column(length: 180)]
     private string $title = '';
@@ -72,6 +82,18 @@ class KnowledgeArticle
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $publishedAt = null;
 
+    /**
+     * @var Collection<int, KnowledgeReference>
+     */
+    #[ORM\OneToMany(
+        mappedBy: 'article',
+        targetEntity: KnowledgeReference::class,
+        cascade: ['persist', 'remove'],
+        orphanRemoval: true,
+    )]
+    #[ORM\OrderBy(['sortOrder' => 'ASC', 'publicationYear' => 'DESC'])]
+    private Collection $references;
+
     #[ORM\Column]
     private \DateTimeImmutable $createdAt;
 
@@ -84,6 +106,7 @@ class KnowledgeArticle
 
         $this->createdAt = $now;
         $this->updatedAt = $now;
+        $this->references = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -101,6 +124,23 @@ class KnowledgeArticle
         $this->category = $category;
 
         return $this;
+    }
+
+    public function getType(): KnowledgeArticleType
+    {
+        return $this->type;
+    }
+
+    public function setType(KnowledgeArticleType $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function isMedicalDossier(): bool
+    {
+        return $this->type === KnowledgeArticleType::MEDICAL_DOSSIER;
     }
 
     public function getTitle(): string
@@ -293,6 +333,35 @@ class KnowledgeArticle
     public function setPublishedAt(?\DateTimeImmutable $publishedAt): self
     {
         $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, KnowledgeReference>
+     */
+    public function getReferences(): Collection
+    {
+        return $this->references;
+    }
+
+    public function addReference(KnowledgeReference $reference): self
+    {
+        if (!$this->references->contains($reference)) {
+            $this->references->add($reference);
+            $reference->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReference(KnowledgeReference $reference): self
+    {
+        if ($this->references->removeElement($reference)) {
+            if ($reference->getArticle() === $this) {
+                $reference->setArticle(null);
+            }
+        }
 
         return $this;
     }
