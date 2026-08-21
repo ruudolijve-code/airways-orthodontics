@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Admin\Controller;
 
 use App\Knowledge\Entity\KnowledgeArticle;
+use App\Knowledge\Enum\KnowledgeArticleType;
 use App\Knowledge\Enum\KnowledgeAudience;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -17,7 +18,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 final class KnowledgeArticleCrudController extends AbstractCrudController
 {
@@ -29,11 +29,11 @@ final class KnowledgeArticleCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('Artikel')
-            ->setEntityLabelInPlural('Artikelen')
+            ->setEntityLabelInSingular('Artikel / dossier')
+            ->setEntityLabelInPlural('Artikelen & dossiers')
             ->setPageTitle(Crud::PAGE_INDEX, 'Kennisbank')
-            ->setPageTitle(Crud::PAGE_NEW, 'Nieuw artikel')
-            ->setPageTitle(Crud::PAGE_EDIT, 'Artikel bewerken')
+            ->setPageTitle(Crud::PAGE_NEW, 'Nieuw artikel of dossier')
+            ->setPageTitle(Crud::PAGE_EDIT, 'Artikel of dossier bewerken')
             ->setSearchFields([
                 'title',
                 'slug',
@@ -56,24 +56,42 @@ final class KnowledgeArticleCrudController extends AbstractCrudController
 
         yield FormField::addFieldset('Basis');
 
+        yield ChoiceField::new(
+            'type',
+            'Type',
+        )
+            ->setChoices([
+                KnowledgeArticleType::ARTICLE->label() => KnowledgeArticleType::ARTICLE,
+                KnowledgeArticleType::MEDICAL_DOSSIER->label() => KnowledgeArticleType::MEDICAL_DOSSIER,
+            ])
+            ->setRequired(true)
+            ->setColumns(6)
+            ->setHelp(
+                'Kies "Medisch dossier" voor verdiepende medische onderwerpen '
+                .'waaraan wetenschappelijke publicaties worden gekoppeld.',
+            );
+
         yield AssociationField::new(
             'category',
             'Categorie',
         )
-            ->setRequired(true);
+            ->setRequired(true)
+            ->setColumns(6);
 
         yield TextField::new(
             'title',
             'Titel',
         )
-            ->setRequired(true);
+            ->setRequired(true)
+            ->setColumns(12);
 
         yield SlugField::new(
             'slug',
             'Slug',
         )
             ->setTargetFieldName('title')
-            ->setRequired(true);
+            ->setRequired(true)
+            ->setColumns(12);
 
         yield ChoiceField::new(
             'audience',
@@ -84,7 +102,8 @@ final class KnowledgeArticleCrudController extends AbstractCrudController
                 KnowledgeAudience::PROFESSIONAL->label() => KnowledgeAudience::PROFESSIONAL,
                 KnowledgeAudience::BOTH->label() => KnowledgeAudience::BOTH,
             ])
-            ->setRequired(true);
+            ->setRequired(true)
+            ->setColumns(6);
 
         /*
          * Inleiding
@@ -107,7 +126,7 @@ final class KnowledgeArticleCrudController extends AbstractCrudController
         )
             ->setNumOfRows(5)
             ->setHelp(
-                'Inleidende tekst die boven de hoofdtekst van het artikel wordt weergegeven.',
+                'Inleidende tekst die boven de hoofdtekst van het artikel of dossier wordt weergegeven.',
             )
             ->hideOnIndex();
 
@@ -118,7 +137,7 @@ final class KnowledgeArticleCrudController extends AbstractCrudController
 
         yield TextareaField::new(
             'content',
-            'Artikel',
+            'Artikeltekst',
         )
             ->setFormTypeOptions([
                 'attr' => [
@@ -127,25 +146,25 @@ final class KnowledgeArticleCrudController extends AbstractCrudController
                 ],
             ])
             ->setHelp(
-                'Gebruik koppen, alinea’s, lijsten en links om het artikel duidelijk te structureren.',
+                'Gebruik koppen, alinea’s, lijsten en links om de inhoud duidelijk te structureren.',
             )
             ->setRequired(true)
             ->hideOnIndex();
-        
+
         /*
          * TAB: Homepage
          */
         yield FormField::addTab('Homepage')
             ->setIcon('fas fa-star');
 
-        yield FormField::addFieldset('Uitgelicht artikel');
+        yield FormField::addFieldset('Uitgelicht');
 
         yield BooleanField::new(
             'isFeatured',
             'Uitgelicht',
         )
             ->setHelp(
-                'Toon dit artikel in het blok met uitgelichte artikelen op de kennisbank.',
+                'Toon dit artikel of dossier in het blok met uitgelichte content op de kennisbank.',
             );
 
         yield IntegerField::new(
@@ -192,7 +211,7 @@ final class KnowledgeArticleCrudController extends AbstractCrudController
             'Leestijd (minuten)',
         )
             ->setHelp(
-                'Geschatte leestijd van het artikel.',
+                'Geschatte leestijd van het artikel of dossier.',
             )
             ->hideOnIndex();
 
@@ -209,7 +228,7 @@ final class KnowledgeArticleCrudController extends AbstractCrudController
             'SEO-titel',
         )
             ->setHelp(
-                'Laat leeg om automatisch de artikeltitel te gebruiken.',
+                'Laat leeg om automatisch de titel te gebruiken.',
             )
             ->hideOnIndex();
 

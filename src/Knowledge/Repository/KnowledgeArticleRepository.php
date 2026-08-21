@@ -6,6 +6,7 @@ namespace App\Knowledge\Repository;
 
 use App\Knowledge\Entity\KnowledgeArticle;
 use App\Knowledge\Entity\KnowledgeCategory;
+use App\Knowledge\Enum\KnowledgeArticleType;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -72,6 +73,17 @@ final class KnowledgeArticleRepository extends ServiceEntityRepository
             ->orderBy('article.featuredOrder', 'ASC')
             ->addOrderBy('article.publishedAt', 'DESC')
             ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findPublishedMedicalDossiers(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.type = :type')
+            ->andWhere('a.isPublished = true')
+            ->setParameter('type', KnowledgeArticleType::MEDICAL_DOSSIER)
+            ->orderBy('a.title', 'ASC')
             ->getQuery()
             ->getResult();
     }

@@ -17,35 +17,21 @@ final class KnowledgeController extends AbstractController
         name: 'knowledge_index',
         methods: ['GET'],
     )]
+
     public function index(
         KnowledgeCategoryRepository $categoryRepository,
         KnowledgeArticleRepository $articleRepository,
     ): Response {
-        $medicalTopics = [
-            [
-                'slug' => 'anatomie',
-                'title' => 'Anatomie',
-                'subtitle' => 'Van bovenkaak tot luchtweg',
-                'description' => 'Over de anatomische samenhang tussen bovenkaak, gehemelte, neusruimte, tongpositie en luchtweg.',
-            ],
-            [
-                'slug' => 'hypoxie',
-                'title' => 'Hypoxie',
-                'subtitle' => 'Gebrekkige zuurstofopname',
-                'description' => 'Over verminderde of herhaald onderbroken zuurstofvoorziening en de mogelijke relatie met slaapgerelateerde ademhalingsproblemen.',
-            ],
-            [
-                'slug' => 'auto-immuunziekten',
-                'title' => 'Auto-immuunziekten',
-                'subtitle' => 'Immuunregulatie en ontstekingsprocessen',
-                'description' => 'Medische achtergrond over immuunregulatie, ontstekingsprocessen en mogelijke relaties met hypoxie en chronische ademhalingsproblematiek.',
-            ],
-        ];
+        $categories = $categoryRepository->findPublished();
+
+        $featuredArticles = $articleRepository->findFeatured();
+
+        $medicalDossiers = $articleRepository->findPublishedMedicalDossiers();
 
         return $this->render('knowledge/index.html.twig', [
-            'categories' => $categoryRepository->findPublished(),
-            'medicalTopics' => $medicalTopics,
-            'featuredArticles' => $articleRepository->findFeatured(),
+            'categories'       => $categories,
+            'featuredArticles' => $featuredArticles,
+            'medicalDossiers'  => $medicalDossiers,
         ]);
     }
 

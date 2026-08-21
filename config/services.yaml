@@ -4,6 +4,7 @@ parameters:
     knowledge.upload_dir: '%kernel.project_dir%/public/uploads/knowledge'
     knowledge.image_dir: '%knowledge.upload_dir%/images'
     knowledge.document_dir: '%knowledge.upload_dir%/documents'
+    knowledge_reference_upload_dir: '%kernel.project_dir%/public/uploads/knowledge/references'
 
 services:
     _defaults:
@@ -19,3 +20,7 @@ services:
     App\Knowledge\Service\ImageUploader:
         arguments:
             $knowledgeUploadDir: '%knowledge.upload_dir%'
+
+    App\Knowledge\Service\PdfUploader:
+        arguments:
+            $knowledgeReferenceUploadDir: '%knowledge_reference_upload_dir%'

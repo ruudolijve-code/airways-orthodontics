@@ -6,6 +6,7 @@ namespace App\Knowledge\Entity;
 
 use App\Knowledge\Enum\KnowledgeEvidenceType;
 use App\Knowledge\Repository\KnowledgeReferenceRepository;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: KnowledgeReferenceRepository::class)]
@@ -299,6 +300,20 @@ class KnowledgeReference
     public function updateTimestamp(): void
     {
         $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    private ?UploadedFile $uploadedPdf = null;
+
+    public function getUploadedPdf(): ?UploadedFile
+    {
+        return $this->uploadedPdf;
+    }
+
+    public function setUploadedPdf(?UploadedFile $uploadedPdf): self
+    {
+        $this->uploadedPdf = $uploadedPdf;
+
+        return $this;
     }
 
     public function __toString(): string

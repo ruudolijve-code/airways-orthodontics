@@ -14,6 +14,14 @@
 
 {% block body %}
 
+{% set isMedicalDossier = article.type.value == 'medical_dossier' %}
+
+{% set publishedReferences = isMedicalDossier
+    ? article.references|filter(reference => reference.isPublished)
+    : []
+%}
+
+
 <section class="relative overflow-hidden bg-gradient-to-br from-teal-950 via-teal-900 to-slate-900 text-white">
 
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,.08),transparent_55%)]"></div>
@@ -45,7 +53,11 @@
         <div class="mt-10 max-w-4xl">
 
             <p class="text-sm font-semibold uppercase tracking-[0.18em] text-teal-300">
-                {{ category.name }}
+                {% if isMedicalDossier %}
+                    Medisch dossier
+                {% else %}
+                    {{ category.name }}
+                {% endif %}
             </p>
 
             <h1 class="mt-5 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
@@ -95,7 +107,7 @@
 
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
 
-        <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-20">
+        <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-20">
 
             <article class="min-w-0">
 
@@ -140,6 +152,256 @@
 
                 </div>
 
+
+                {% if isMedicalDossier and publishedReferences|length > 0 %}
+
+                    <section
+                        id="wetenschappelijke-publicaties"
+                        class="mt-20 border-t border-slate-200 pt-14"
+                    >
+
+                        <div class="max-w-3xl">
+
+                            <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+                                Wetenschappelijke verdieping
+                            </p>
+
+                            <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950">
+                                Wetenschappelijke publicaties
+                            </h2>
+
+                            <p class="mt-5 text-lg leading-8 text-slate-600">
+                                Onderstaande publicaties vormen de wetenschappelijke
+                                verdieping bij dit medische dossier. Per studie tonen we
+                                de belangrijkste bevindingen, klinische relevantie en
+                                eventuele beperkingen.
+                            </p>
+
+                        </div>
+
+
+                        <div class="mt-10 space-y-8">
+
+                            {% for reference in publishedReferences %}
+
+                                <article class="rounded-3xl border border-slate-200 bg-slate-50 p-7 sm:p-9">
+
+                                    <div class="flex flex-wrap items-center gap-3">
+
+                                        <span class="inline-flex rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-teal-800">
+                                            {{ reference.evidenceType.label }}
+                                        </span>
+
+                                        {% if reference.publicationYear %}
+                                            <span class="text-sm font-medium text-slate-500">
+                                                {{ reference.publicationYear }}
+                                            </span>
+                                        {% endif %}
+
+                                        {% if reference.journal %}
+                                            <span class="text-sm text-slate-500">
+                                                {{ reference.journal }}
+                                            </span>
+                                        {% endif %}
+
+                                    </div>
+
+
+                                    <h3 class="mt-5 text-2xl font-semibold leading-snug text-slate-950">
+                                        {{ reference.title }}
+                                    </h3>
+
+
+                                    {% if reference.authors %}
+                                        <p class="mt-3 text-sm leading-6 text-slate-500">
+                                            {{ reference.authors }}
+                                        </p>
+                                    {% endif %}
+
+
+                                    {% if reference.summary %}
+
+                                        <div class="mt-7">
+
+                                            <h4 class="text-base font-semibold text-slate-950">
+                                                Samenvatting
+                                            </h4>
+
+                                            <p class="mt-3 leading-8 text-slate-600">
+                                                {{ reference.summary }}
+                                            </p>
+
+                                        </div>
+
+                                    {% endif %}
+
+
+                                    {% if reference.clinicalRelevance %}
+
+                                        <div class="mt-7 rounded-2xl bg-white p-6">
+
+                                            <h4 class="text-base font-semibold text-slate-950">
+                                                Klinische relevantie
+                                            </h4>
+
+                                            <p class="mt-3 leading-8 text-slate-600">
+                                                {{ reference.clinicalRelevance }}
+                                            </p>
+
+                                        </div>
+
+                                    {% endif %}
+
+
+                                    {% if reference.limitations %}
+
+                                        <div class="mt-7">
+
+                                            <h4 class="text-base font-semibold text-slate-950">
+                                                Beperkingen van de studie
+                                            </h4>
+
+                                            <p class="mt-3 leading-8 text-slate-600">
+                                                {{ reference.limitations }}
+                                            </p>
+
+                                        </div>
+
+                                    {% endif %}
+
+
+                                    <div class="mt-8 flex flex-wrap items-center gap-3">
+
+                                        {% if reference.externalUrl %}
+
+                                            <a
+                                                href="{{ reference.externalUrl }}"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="inline-flex items-center rounded-full bg-teal-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-900"
+                                            >
+                                                Bekijk publicatie
+
+                                                <svg
+                                                    viewBox="0 0 20 20"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.8"
+                                                    class="ml-2 h-4 w-4"
+                                                    aria-hidden="true"
+                                                >
+                                                    <path
+                                                        d="M7 13 13 7m-4 0h4v4"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                    />
+                                                </svg>
+                                            </a>
+
+                                        {% elseif reference.doi %}
+
+                                            <a
+                                                href="https://doi.org/{{ reference.doi }}"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="inline-flex items-center rounded-full bg-teal-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-900"
+                                            >
+                                                Bekijk publicatie
+
+                                                <svg
+                                                    viewBox="0 0 20 20"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.8"
+                                                    class="ml-2 h-4 w-4"
+                                                    aria-hidden="true"
+                                                >
+                                                    <path
+                                                        d="M7 13 13 7m-4 0h4v4"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                    />
+                                                </svg>
+                                            </a>
+
+                                        {% endif %}
+
+
+                                        {% if reference.pdfFilename %}
+
+                                            <a
+                                                href="{{ asset(
+                                                    'uploads/knowledge/references/'
+                                                    ~ reference.pdfFilename
+                                                ) }}"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="inline-flex items-center rounded-full border border-teal-800 px-5 py-3 text-sm font-semibold text-teal-800 transition hover:bg-teal-50"
+                                            >
+                                                <svg
+                                                    viewBox="0 0 20 20"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.8"
+                                                    class="mr-2 h-4 w-4"
+                                                    aria-hidden="true"
+                                                >
+                                                    <path
+                                                        d="M6 2.75h5l3 3V17.25H6V2.75Z"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                    />
+                                                    <path
+                                                        d="M11 2.75v3h3M8 11h4M8 14h3"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                    />
+                                                </svg>
+
+                                                Open PDF
+                                            </a>
+
+                                        {% endif %}
+
+                                    </div>
+
+
+                                    {% if reference.doi or reference.license %}
+
+                                        <div class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-500">
+
+                                            {% if reference.doi %}
+                                                <span>
+                                                    DOI:
+                                                    <span class="font-medium text-slate-700">
+                                                        {{ reference.doi }}
+                                                    </span>
+                                                </span>
+                                            {% endif %}
+
+                                            {% if reference.license %}
+                                                <span>
+                                                    Licentie:
+                                                    <span class="font-medium text-slate-700">
+                                                        {{ reference.license }}
+                                                    </span>
+                                                </span>
+                                            {% endif %}
+
+                                        </div>
+
+                                    {% endif %}
+
+                                </article>
+
+                            {% endfor %}
+
+                        </div>
+
+                    </section>
+
+                {% endif %}
+
             </article>
 
 
@@ -148,7 +410,11 @@
                 <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6">
 
                     <p class="text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">
-                        Onderwerp
+                        {% if isMedicalDossier %}
+                            Medisch dossier
+                        {% else %}
+                            Onderwerp
+                        {% endif %}
                     </p>
 
                     <p class="mt-3 text-lg font-semibold text-slate-950">
@@ -161,11 +427,190 @@
                         </p>
                     {% endif %}
 
+
+                    {% if isMedicalDossier and publishedReferences|length > 0 %}
+
+                        <div class="mt-6 border-t border-slate-200 pt-6">
+
+                            <p class="text-sm font-semibold text-slate-950">
+                                Wetenschappelijke onderbouwing
+                            </p>
+
+                            <p class="mt-2 text-sm leading-6 text-slate-600">
+                                {{ publishedReferences|length }}
+                                {% if publishedReferences|length == 1 %}
+                                    publicatie gekoppeld
+                                {% else %}
+                                    publicaties gekoppeld
+                                {% endif %}
+                            </p>
+
+
+                            <div class="mt-5 space-y-5">
+
+                                {% for reference in publishedReferences %}
+
+                                    <div{% if not loop.first %} class="border-t border-slate-200 pt-5"{% endif %}>
+
+                                        <p class="text-sm font-semibold leading-6 text-slate-950">
+                                            {{ reference.title }}
+                                        </p>
+
+                                        {% if reference.journal or reference.publicationYear %}
+
+                                            <p class="mt-2 text-xs leading-5 text-slate-500">
+
+                                                {% if reference.journal %}
+                                                    {{ reference.journal }}
+                                                {% endif %}
+
+                                                {% if reference.journal and reference.publicationYear %}
+                                                    ·
+                                                {% endif %}
+
+                                                {% if reference.publicationYear %}
+                                                    {{ reference.publicationYear }}
+                                                {% endif %}
+
+                                            </p>
+
+                                        {% endif %}
+
+
+                                        <div class="mt-4 space-y-2">
+
+                                            {% if reference.externalUrl %}
+
+                                                <a
+                                                    href="{{ reference.externalUrl }}"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="flex items-center gap-2 text-sm font-semibold text-teal-700 transition hover:text-teal-900"
+                                                >
+                                                    Bekijk publicatie
+
+                                                    <svg
+                                                        viewBox="0 0 20 20"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="1.8"
+                                                        class="h-4 w-4"
+                                                        aria-hidden="true"
+                                                    >
+                                                        <path
+                                                            d="M7 13 13 7m-4 0h4v4"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                        />
+                                                    </svg>
+                                                </a>
+
+                                            {% elseif reference.doi %}
+
+                                                <a
+                                                    href="https://doi.org/{{ reference.doi }}"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="flex items-center gap-2 text-sm font-semibold text-teal-700 transition hover:text-teal-900"
+                                                >
+                                                    Bekijk publicatie
+
+                                                    <svg
+                                                        viewBox="0 0 20 20"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="1.8"
+                                                        class="h-4 w-4"
+                                                        aria-hidden="true"
+                                                    >
+                                                        <path
+                                                            d="M7 13 13 7m-4 0h4v4"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                        />
+                                                    </svg>
+                                                </a>
+
+                                            {% endif %}
+
+
+                                            {% if reference.pdfFilename %}
+
+                                                <a
+                                                    href="{{ asset(
+                                                        'uploads/knowledge/references/'
+                                                        ~ reference.pdfFilename
+                                                    ) }}"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="flex items-center gap-2 text-sm font-semibold text-teal-700 transition hover:text-teal-900"
+                                                >
+                                                    <svg
+                                                        viewBox="0 0 20 20"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        stroke-width="1.8"
+                                                        class="h-4 w-4"
+                                                        aria-hidden="true"
+                                                    >
+                                                        <path
+                                                            d="M6 2.75h5l3 3V17.25H6V2.75Z"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                        />
+                                                        <path
+                                                            d="M11 2.75v3h3M8 11h4M8 14h3"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                        />
+                                                    </svg>
+
+                                                    Open PDF
+                                                </a>
+
+                                            {% endif %}
+
+
+                                            <a
+                                                href="#wetenschappelijke-publicaties"
+                                                class="flex items-center gap-2 text-sm font-semibold text-slate-600 transition hover:text-teal-800"
+                                            >
+                                                Lees onze samenvatting
+
+                                                <svg
+                                                    viewBox="0 0 20 20"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.8"
+                                                    class="h-4 w-4"
+                                                    aria-hidden="true"
+                                                >
+                                                    <path
+                                                        d="m5 7.5 5 5 5-5"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                    />
+                                                </svg>
+                                            </a>
+
+                                        </div>
+
+                                    </div>
+
+                                {% endfor %}
+
+                            </div>
+
+                        </div>
+
+                    {% endif %}
+
+
                     <a
                         href="{{ path('knowledge_category_show', {
                             slug: category.slug
                         }) }}"
-                        class="mt-6 inline-flex items-center font-semibold text-teal-700 transition hover:text-teal-900"
+                        class="mt-7 inline-flex items-center font-semibold text-teal-700 transition hover:text-teal-900"
                     >
                         Meer artikelen
 
