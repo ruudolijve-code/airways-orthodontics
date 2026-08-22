@@ -1,0 +1,613 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Gratis informatief consult | Airways Orthodontics
+{% endblock %}
+
+{% block meta_description %}
+    Maak vrijblijvend kennis met Airways Orthodontics tijdens een gratis informatief consult. Bespreek klachten rond ademhaling, slaap en kaakontwikkeling en ontdek welke vervolgstappen mogelijk passend zijn.
+{% endblock %}
+
+{% block body %}
+
+    {# Hero #}
+    <section class="relative overflow-hidden bg-[#f4f5f1]">
+
+        <div class="mx-auto grid max-w-7xl items-center gap-14 px-6 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-24">
+
+            {# Tekst #}
+            <div class="max-w-3xl">
+
+                <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+                    Vrijblijvend kennismaken
+                </p>
+
+                <h1 class="mt-4 text-4xl font-semibold tracking-[-0.035em] text-slate-950 sm:text-5xl lg:text-6xl lg:leading-[1.05]">
+                    Gratis informatief
+                    <span class="text-teal-900">
+                        consult
+                    </span>
+                </h1>
+
+                <p class="mt-7 max-w-2xl text-lg leading-8 text-slate-600">
+                    Heeft u vragen over mondademhaling, snurken, slaap,
+                    kaakontwikkeling of andere klachten die mogelijk met de
+                    luchtweg samenhangen? Tijdens een gratis informatief consult
+                    kijken we samen of verdere beoordeling zinvol kan zijn.
+                </p>
+
+                <p class="mt-4 max-w-2xl text-base leading-7 text-slate-600">
+                    Het consult is bedoeld als laagdrempelige eerste kennismaking.
+                    U krijgt uitleg over onze werkwijze, we bespreken uw klachten
+                    en u hoort welke mogelijke vervolgstappen bij uw situatie
+                    zouden kunnen passen.
+                </p>
+
+                <div class="mt-9 flex flex-wrap gap-4">
+
+                    <a
+                        href="{{ path('contact_index') }}"
+                        class="inline-flex items-center justify-center rounded-full bg-teal-950 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-teal-900"
+                    >
+                        Gratis consult aanvragen
+
+                        <svg
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            class="ml-2 h-4 w-4"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M4 10h12m-5-5 5 5-5 5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </a>
+
+                    <a
+                        href="{{ path('reimbursement_index') }}"
+                        class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-900 transition hover:border-slate-400 hover:bg-slate-50"
+                    >
+                        Bekijk vergoedingen
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            {# Informatiekaart #}
+            <div class="rounded-[2.5rem] bg-teal-950 p-8 text-white sm:p-10 lg:p-12">
+
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+                    Het eerste gesprek
+                </p>
+
+                <h2 class="mt-4 text-2xl font-semibold sm:text-3xl">
+                    Wat kunt u verwachten?
+                </h2>
+
+                <div class="mt-8 space-y-6">
+
+                    <div class="flex items-start gap-4">
+
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-sm font-semibold text-teal-200">
+                            01
+                        </div>
+
+                        <div>
+                            <p class="font-semibold">
+                                Persoonlijk gesprek
+                            </p>
+
+                            <p class="mt-1 text-sm leading-6 text-white/65">
+                                We bespreken uw klachten, medische voorgeschiedenis,
+                                ademhaling en slaap.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="flex items-start gap-4">
+
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-sm font-semibold text-teal-200">
+                            02
+                        </div>
+
+                        <div>
+                            <p class="font-semibold">
+                                Eerste beoordeling
+                            </p>
+
+                            <p class="mt-1 text-sm leading-6 text-white/65">
+                                Er wordt gekeken naar relevante factoren rond mond,
+                                kaak, tongfunctie en ademhaling.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="flex items-start gap-4">
+
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-sm font-semibold text-teal-200">
+                            03
+                        </div>
+
+                        <div>
+                            <p class="font-semibold">
+                                Uitleg en advies
+                            </p>
+
+                            <p class="mt-1 text-sm leading-6 text-white/65">
+                                U krijgt uitleg over mogelijke vervolgstappen en
+                                welke discipline eventueel betrokken kan worden.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="mt-9 border-t border-white/10 pt-7">
+
+                    <div class="flex items-center justify-between gap-4">
+
+                        <span class="text-sm text-white/60">
+                            Indicatieve duur
+                        </span>
+
+                        <span class="text-sm font-semibold">
+                            45–60 minuten
+                        </span>
+
+                    </div>
+
+                    <div class="mt-3 flex items-center justify-between gap-4">
+
+                        <span class="text-sm text-white/60">
+                            Kosten eerste consult
+                        </span>
+
+                        <span class="text-sm font-semibold">
+                            Gratis
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {# Voor wie #}
+    <section class="bg-white py-20 lg:py-28">
+
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div class="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+
+                <div class="max-w-xl">
+
+                    <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+                        Wanneer kan een consult zinvol zijn?
+                    </p>
+
+                    <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                        Herkent u één of meerdere signalen?
+                    </h2>
+
+                    <p class="mt-5 text-lg leading-8 text-slate-600">
+                        Ademhalings- en slaapproblemen kunnen zich op verschillende
+                        manieren uiten. Een eerste gesprek kan helpen om de
+                        klachten in samenhang te bekijken.
+                    </p>
+
+                </div>
+
+
+                {% set signals = [
+                    {
+                        title: 'Snurken of zware ademhaling',
+                        text: 'Structureel snurken, hoorbare ademhaling of onrustige slaap.'
+                    },
+                    {
+                        title: 'Mondademhaling',
+                        text: 'Veelvuldig met open mond ademen, overdag of tijdens de slaap.'
+                    },
+                    {
+                        title: 'Niet uitgerust wakker worden',
+                        text: 'Vermoeidheid, ochtendhoofdpijn of concentratieproblemen ondanks voldoende uren slaap.'
+                    },
+                    {
+                        title: 'Chronische neusklachten',
+                        text: 'Terugkerende neusverstopping, allergieën of moeite met neusademhaling.'
+                    },
+                    {
+                        title: 'Kaakontwikkeling',
+                        text: 'Een smalle bovenkaak, afwijkende beet of beperkte ruimte voor de tong.'
+                    },
+                    {
+                        title: 'Eerder slaap- of KNO-onderzoek',
+                        text: 'Wanneer eerdere onderzoeken vragen oproepen over mogelijke aanvullende beoordeling.'
+                    }
+                ] %}
+
+                <div class="grid gap-px overflow-hidden rounded-3xl border border-slate-200 bg-slate-200 sm:grid-cols-2">
+
+                    {% for signal in signals %}
+
+                        <article class="bg-[#f7f8f5] p-7">
+
+                            <div class="flex h-9 w-9 items-center justify-center rounded-full bg-teal-50 text-teal-800">
+
+                                <svg
+                                    viewBox="0 0 20 20"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    class="h-4 w-4"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="m5 10 3 3 7-7"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+
+                            </div>
+
+                            <h3 class="mt-5 font-semibold text-slate-950">
+                                {{ signal.title }}
+                            </h3>
+
+                            <p class="mt-2 text-sm leading-6 text-slate-600">
+                                {{ signal.text }}
+                            </p>
+
+                        </article>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {# Consult onderdelen #}
+    <section class="bg-[#eaf7f6] py-20 lg:py-28">
+
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div class="max-w-3xl">
+
+                <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+                    Tijdens het consult
+                </p>
+
+                <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                    Vier onderdelen van de eerste beoordeling
+                </h2>
+
+                <p class="mt-5 text-lg leading-8 text-slate-600">
+                    We kijken niet alleen naar één klacht, maar proberen relevante
+                    factoren rond ademhaling, slaap en kaakontwikkeling met elkaar
+                    in verband te brengen.
+                </p>
+
+            </div>
+
+
+            {% set consultSteps = [
+                {
+                    number: '01',
+                    title: 'Anamnese en gesprek',
+                    text: 'We bespreken uw medische voorgeschiedenis, slaappatroon, ademhaling en klachten in het dagelijks leven.'
+                },
+                {
+                    number: '02',
+                    title: 'Mond- en kaakbeoordeling',
+                    text: 'Er wordt gekeken naar onder andere kaakbreedte, beet, beschikbare tongruimte, tongpositie en mondfunctie.'
+                },
+                {
+                    number: '03',
+                    title: 'Ademhaling en luchtweg',
+                    text: 'We beoordelen signalen die mogelijk samenhangen met neusademhaling, mondademhaling, kaakstructuur en functionele compensaties.'
+                },
+                {
+                    number: '04',
+                    title: 'Advies en vervolgstappen',
+                    text: 'U krijgt uitleg over de bevindingen en over eventueel aanvullend onderzoek of beoordeling door een andere discipline.'
+                }
+            ] %}
+
+            <div class="mt-14 grid gap-5 md:grid-cols-2">
+
+                {% for step in consultSteps %}
+
+                    <article class="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200/70">
+
+                        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-teal-50 text-sm font-semibold text-teal-800">
+                            {{ step.number }}
+                        </div>
+
+                        <h3 class="mt-6 text-xl font-semibold text-slate-950">
+                            {{ step.title }}
+                        </h3>
+
+                        <p class="mt-3 text-sm leading-6 text-slate-600">
+                            {{ step.text }}
+                        </p>
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {# Multidisciplinair #}
+    <section class="bg-white py-20 lg:py-28">
+
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div class="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
+
+                <div>
+
+                    <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+                        Multidisciplinaire aanpak
+                    </p>
+
+                    <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                        Niet iedere klacht vraagt om orthodontische behandeling
+                    </h2>
+
+                    <p class="mt-5 text-lg leading-8 text-slate-600">
+                        Het doel van het eerste consult is niet om vooraf vast te
+                        stellen dat een orthodontisch traject noodzakelijk is.
+                        We kijken juist welke vervolgstap op basis van de klachten
+                        en eerste bevindingen het meest logisch lijkt.
+                    </p>
+
+                    <p class="mt-4 leading-7 text-slate-600">
+                        Afhankelijk van de situatie kan verdere beoordeling door
+                        bijvoorbeeld orthodontie, KNO, kaakchirurgie, logopedie,
+                        ademtherapie of slaapgeneeskunde relevant zijn.
+                    </p>
+
+                </div>
+
+
+                <div class="rounded-3xl bg-[#f4f5f1] p-8 lg:p-10">
+
+                    <p class="text-sm font-semibold text-teal-800">
+                        Mogelijke vervolgstappen
+                    </p>
+
+                    <ul class="mt-6 space-y-4">
+
+                        {% set referrals = [
+                            'Aanvullende orthodontische diagnostiek',
+                            'Beoordeling van neus en bovenste luchtweg',
+                            'Slaaponderzoek of beoordeling door een slaapspecialist',
+                            'Myofunctionele therapie of logopedie',
+                            'Ademtherapie of fysiotherapeutische begeleiding',
+                            'Kaakchirurgische beoordeling wanneer daarvoor aanleiding bestaat'
+                        ] %}
+
+                        {% for referral in referrals %}
+
+                            <li class="flex items-start gap-3 text-sm leading-6 text-slate-700">
+
+                                <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-800">
+
+                                    <svg
+                                        viewBox="0 0 20 20"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        class="h-3 w-3"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            d="m5 10 3 3 7-7"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </svg>
+
+                                </span>
+
+                                <span>
+                                    {{ referral }}
+                                </span>
+
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {# Voorbereiden #}
+    <section class="bg-[#f4f5f1] py-20 lg:py-24">
+
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-20">
+
+                <div>
+
+                    <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+                        Voorbereiding
+                    </p>
+
+                    <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950">
+                        Wat kunt u meenemen?
+                    </h2>
+
+                    <p class="mt-5 leading-7 text-slate-600">
+                        U hoeft geen uitgebreid dossier samen te stellen.
+                        Beschikbare informatie over uw slaap, gezondheid en
+                        eerdere onderzoeken kan wel helpen om tijdens het gesprek
+                        een completer beeld te krijgen.
+                    </p>
+
+                </div>
+
+
+                <div class="grid gap-4">
+
+                    <div class="rounded-2xl bg-white p-6 ring-1 ring-slate-200/70">
+                        <h3 class="font-semibold text-slate-950">
+                            Slaapobservaties
+                        </h3>
+
+                        <p class="mt-2 text-sm leading-6 text-slate-600">
+                            Bijvoorbeeld informatie van een partner of ouder over
+                            snurken, mondademhaling, onrustige slaap of naar adem
+                            happen.
+                        </p>
+                    </div>
+
+                    <div class="rounded-2xl bg-white p-6 ring-1 ring-slate-200/70">
+                        <h3 class="font-semibold text-slate-950">
+                            Eerdere onderzoeksuitslagen
+                        </h3>
+
+                        <p class="mt-2 text-sm leading-6 text-slate-600">
+                            Denk aan een eerder slaaponderzoek, relevante
+                            KNO-verslagen of andere medische informatie die
+                            betrekking heeft op de klachten.
+                        </p>
+                    </div>
+
+                    <div class="rounded-2xl bg-white p-6 ring-1 ring-slate-200/70">
+                        <h3 class="font-semibold text-slate-950">
+                            Medicatie en allergieën
+                        </h3>
+
+                        <p class="mt-2 text-sm leading-6 text-slate-600">
+                            Een actueel overzicht van medicatie en eventuele
+                            behandeling voor allergieën of neusklachten kan
+                            relevante achtergrondinformatie geven.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {# Final CTA #}
+    <section class="bg-teal-950 py-16 text-white lg:py-20">
+
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+
+                <div class="max-w-3xl">
+
+                    <p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-300">
+                        Vrijblijvend kennismaken
+                    </p>
+
+                    <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+                        Wilt u weten of verdere beoordeling zinvol kan zijn?
+                    </h2>
+
+                    <p class="mt-4 max-w-2xl text-base leading-7 text-white/65">
+                        Vraag een gratis informatief consult aan. Tijdens het
+                        eerste gesprek bespreken we uw vragen en leggen we uit
+                        welke vervolgstappen mogelijk passend zijn.
+                    </p>
+
+                </div>
+
+
+                <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+
+                    <a
+                        href="{{ path('contact_index') }}"
+                        class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-teal-950 transition hover:bg-teal-50"
+                    >
+                        Gratis consult aanvragen
+
+                        <svg
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            class="ml-2 h-4 w-4"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M4 10h12m-5-5 5 5-5 5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </a>
+
+                    <a
+                        href="{{ path('reimbursement_index') }}"
+                        class="inline-flex items-center justify-center rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10"
+                    >
+                        Informatie over vergoedingen
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {# Disclaimer #}
+    <section class="bg-white py-10">
+
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <p class="max-w-4xl text-xs leading-5 text-slate-500">
+                Het gratis informatief consult is bedoeld voor een eerste
+                oriënterende beoordeling en algemene informatie. Het vervangt
+                geen medisch-specialistische diagnostiek of slaaponderzoek.
+                Wanneer aanvullend onderzoek of beoordeling door een andere
+                zorgprofessional aangewezen lijkt, wordt dit met u besproken.
+            </p>
+
+        </div>
+
+    </section>
+
+{% endblock %}
