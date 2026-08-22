@@ -20,10 +20,11 @@ final class CollaborationController extends AbstractController
                 'description' => 'Orthodontische expertise binnen de multidisciplinaire behandeling van kaakontwikkeling, gebitsstand en ademhalingsgerelateerde problematiek.',
                 'professionals' => [
                     [
-                        'name' => 'Bart Alink',
-                        'function' => 'Tandarts voor Orthodontics MSc',
+                        'name' => 'drs. Bart Alink, MSc Orthodontics',
+                        'function' => 'Tandarts voor Orthodontie',
                         'role' => 'Diagnostiek en orthodontische behandeling, met bijzondere expertise in kaakverbreding en de groei van de bovenkaak bij kinderen en volwassenen.',
                         'photo' => 'images/collaboration/professionals/bart-alink.jpg',
+                        'BIG' => '89019669502',
                     ],
                     [
                         'name' => 'Dr. med. dent.Alexander Alink',
@@ -33,10 +34,11 @@ final class CollaborationController extends AbstractController
                         'BIG' => '19933885302',
                     ],
                     [
-                        'name' => 'Alexandra Redmer',
-                        'function' => 'Tandarts voor Orthodontics MSc',
+                        'name' => 'drs. Alexandra Redmer, MSc Orthodontics',
+                        'function' => 'Tandarts voor Orthodontie',
                         'role' => 'Orthodontische behandeling gericht op kaakontwikkeling, gebitsstand en, waar geïndiceerd, verbreding van de bovenkaak.',
                         'photo' => 'images/collaboration/professionals/alexandra-redmer.jpg',
+                        'BIG' => '79916538102',
                     ],
                 ],
             ],
