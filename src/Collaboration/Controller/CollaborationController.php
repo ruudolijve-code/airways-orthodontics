@@ -21,20 +21,20 @@ final class CollaborationController extends AbstractController
                 'professionals' => [
                     [
                         'name' => 'Bart Alink',
-                        'function' => 'Tandarts & Orthodontics MSc',
+                        'function' => 'Tandarts voor Orthodontics MSc',
                         'role' => 'Diagnostiek en orthodontische behandeling, met bijzondere expertise in kaakverbreding en de groei van de bovenkaak bij kinderen en volwassenen.',
                         'photo' => 'images/collaboration/professionals/bart-alink.jpg',
                     ],
                     [
-                        'name' => 'Alexander Alink',
-                        'function' => 'Tandarts & Orthodontics MSc',
+                        'name' => 'Dr. med. dent.Alexander Alink',
+                        'function' => 'Tandarts – gespecialiseerd in restauratieve tandheelkunde en multidisciplinaire airway-zorg',
                         'role' => 'Orthodontische behandeling gericht op kaakontwikkeling, gebitsstand en, waar geïndiceerd, verbreding van de bovenkaak.',
                         'photo' => 'images/collaboration/professionals/alexander-alink.png',
                         'BIG' => '19933885302',
                     ],
                     [
                         'name' => 'Alexandra Redmer',
-                        'function' => 'Orthodontics MSc',
+                        'function' => 'Tandarts voor Orthodontics MSc',
                         'role' => 'Orthodontische behandeling gericht op kaakontwikkeling, gebitsstand en, waar geïndiceerd, verbreding van de bovenkaak.',
                         'photo' => 'images/collaboration/professionals/alexandra-redmer.jpg',
                     ],
@@ -46,7 +46,7 @@ final class CollaborationController extends AbstractController
                 'description' => 'Specialistische kaakchirurgische expertise wanneer anatomie of kaakpositie aanleiding geeft voor aanvullende diagnostiek of chirurgische behandeling.',
                 'professionals' => [
                     [
-                        'name' => 'Frank Leusink',
+                        'name' => 'Dr. Frank Leusink',
                         'function' => 'Kaakchirurg',
                         'role' => 'Beoordeling van kaakpositie en anatomie en, wanneer nodig, uitvoering of advisering van kaakchirurgische behandelopties.',
                         'photo' => 'images/collaboration/professionals/frank-leusink.jpg',
