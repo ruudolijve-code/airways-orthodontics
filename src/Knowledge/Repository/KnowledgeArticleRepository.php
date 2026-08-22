@@ -87,4 +87,47 @@ final class KnowledgeArticleRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function searchPublished(string $query): array
+    {
+        $query = trim($query);
+
+        if ($query === '') {
+            return [];
+        }
+
+        return $this->createQueryBuilder('article')
+            ->leftJoin('article.category', 'category')
+            ->leftJoin(
+                'article.references',
+                'reference',
+                'WITH',
+                'reference.isPublished = true',
+            )
+            ->addSelect('category')
+            ->addSelect('reference')
+            ->andWhere('article.isPublished = true')
+            ->andWhere(
+                'LOWER(article.title) LIKE LOWER(:query)
+                OR LOWER(article.slug) LIKE LOWER(:query)
+                OR LOWER(article.excerpt) LIKE LOWER(:query)
+                OR LOWER(article.intro) LIKE LOWER(:query)
+                OR LOWER(article.content) LIKE LOWER(:query)
+                OR LOWER(category.name) LIKE LOWER(:query)
+                OR LOWER(reference.title) LIKE LOWER(:query)
+                OR LOWER(reference.authors) LIKE LOWER(:query)
+                OR LOWER(reference.journal) LIKE LOWER(:query)
+                OR LOWER(reference.doi) LIKE LOWER(:query)
+                OR LOWER(reference.summary) LIKE LOWER(:query)
+                OR LOWER(reference.clinicalRelevance) LIKE LOWER(:query)'
+            )
+            ->setParameter(
+                'query',
+                '%'.mb_strtolower($query).'%',
+            )
+            ->distinct()
+            ->orderBy('article.title', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }

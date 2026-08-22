@@ -7,6 +7,7 @@ namespace App\Knowledge\Controller;
 use App\Knowledge\Repository\KnowledgeArticleRepository;
 use App\Knowledge\Repository\KnowledgeCategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -17,21 +18,31 @@ final class KnowledgeController extends AbstractController
         name: 'knowledge_index',
         methods: ['GET'],
     )]
-
     public function index(
+        Request $request,
         KnowledgeCategoryRepository $categoryRepository,
         KnowledgeArticleRepository $articleRepository,
     ): Response {
+        $query = trim((string) $request->query->get('q', ''));
+
         $categories = $categoryRepository->findPublished();
 
         $featuredArticles = $articleRepository->findFeatured();
 
         $medicalDossiers = $articleRepository->findPublishedMedicalDossiers();
 
+        $searchResults = [];
+
+        if ($query !== '') {
+            $searchResults = $articleRepository->searchPublished($query);
+        }
+
         return $this->render('knowledge/index.html.twig', [
-            'categories'       => $categories,
+            'categories' => $categories,
             'featuredArticles' => $featuredArticles,
-            'medicalDossiers'  => $medicalDossiers,
+            'medicalDossiers' => $medicalDossiers,
+            'searchQuery' => $query,
+            'searchResults' => $searchResults,
         ]);
     }
 
