@@ -4,49 +4,13 @@
 >
     <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
 
-        <a
+       <a
             href="{{ path('home') }}"
-            class="flex items-center gap-3"
-            aria-label="Airways Orthodontics home"
+            class="flex shrink-0 items-center"
+            aria-label="Airways Dentistry & Orthodontics home"
         >
-            <div class="flex h-11 w-11 items-center justify-center rounded-full bg-teal-950 text-white">
-                <svg
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    class="h-7 w-7"
-                    aria-hidden="true"
-                >
-                    <path
-                        d="M20 6C16 11 14 15 14 20C14 26 16.8 30.3 20 34"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                    />
-
-                    <path
-                        d="M20 6C24 11 26 15 26 20C26 26 23.2 30.3 20 34"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                    />
-
-                    <path
-                        d="M14.5 18H25.5"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                    />
-                </svg>
-            </div>
-
-            <div class="leading-none">
-                <span class="block text-xl font-semibold tracking-tight text-slate-950">
-                    Airways
-                </span>
-
-                <span class="mt-1 block text-[10px] font-medium uppercase tracking-[0.2em] text-slate-500">
-                    Orthodontics
-                </span>
+            <div class="h-20 w-auto">
+                {% include 'partials/logo/airways-logo.svg.twig' %}
             </div>
         </a>
 
